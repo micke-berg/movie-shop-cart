@@ -1,0 +1,15 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  font-weight: 3rem;
+}
+
+.nav-black {
+  z-index: 100;
+  background: #141414;
+}
