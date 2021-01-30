@@ -12,7 +12,7 @@ const Hero = ({ title, backgroundImage , description}) => {
       <div className="hero-section">
         <div className="hero" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7) 15%, transparent 60%), url(${backgroundImage})` }}>
         </div>
-          <div class="hero-info-wrapper">
+          <div className="hero-info-wrapper">
             <div className="hero-title">
               {title}
             </div>

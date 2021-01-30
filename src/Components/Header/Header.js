@@ -3,7 +3,12 @@ import './Header.scss';
 
 import Navbar from '../Navbar/Navbar';
 
-const Header = () => {
+const Header = ({ 
+  count,
+  price,
+  sortMovies,
+  filterMovies
+}) => {
   const [handleShow, setHandleShow] = useState(false);
 
   useEffect(() => {
@@ -24,7 +29,12 @@ const Header = () => {
   
   return (
       <header className={`header ${handleShow && "nav-black"}`}>
-        <Navbar />
+        <Navbar 
+        count={count} 
+        price={price}
+        filterMovies={filterMovies}
+        sortMovies={sortMovies}
+        />
       </header>
   )
 }
