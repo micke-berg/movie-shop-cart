@@ -10,7 +10,7 @@
       "releaseDate": "2020-12-16",
       "rating": 7.1,
       "option": 2,
-      "movieGenre": ["Action", "Comedy", "Horror"]
+      "movieGenre": ["Action", "Drama"]
     },
     {
       "id": 2,
@@ -34,7 +34,7 @@
       "releaseDate": "2020-09-03",
       "rating": 6.6,
       "option": 2,
-      "movieGenre": ["Action", "Comedy", "Crime"]
+      "movieGenre": ["Action", "Thriller"]
     },
     {
       "id": 4,
@@ -46,7 +46,7 @@
       "releaseDate": "2020-12-16",
       "rating": 7.1,
       "option": 2,
-      "movieGenre": ["Action", "Comedy", "Horror"]
+      "movieGenre": ["Drama"]
     },
     {
       "id": 5,
@@ -58,7 +58,7 @@
       "releaseDate": "2021-11-10",
       "rating": 8.2,
       "option": 2,
-      "movieGenre": ["Action", "Comedy"]
+      "movieGenre": ["Comedy"]
     },
     {
       "id": 6,
@@ -70,7 +70,7 @@
       "releaseDate": "2020-09-03",
       "rating": 6.6,
       "option": 2,
-      "movieGenre": ["Action", "Comedy", "Crime"]
+      "movieGenre": ["Action", "Crime"]
     },
     {
       "id": 7,
@@ -82,7 +82,7 @@
       "releaseDate": "2020-12-16",
       "rating": 7.1,
       "option": 2,
-      "movieGenre": ["Action", "Comedy", "Horror"]
+      "movieGenre": ["Comedy"]
     },
     {
       "id": 8,
@@ -106,7 +106,7 @@
       "releaseDate": "2020-09-03",
       "rating": 6.6,
       "option": 2,
-      "movieGenre": ["Action", "Comedy", "Crime"]
+      "movieGenre": ["Action", "Crime"]
     }
   ]
 }
