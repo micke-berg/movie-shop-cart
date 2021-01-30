@@ -1,0 +1,49 @@
+.hero-section {
+  position: relative;
+  background-size: cover;
+  object-fit: contain;
+  position: relative;
+  height: 96vh;
+  background-color: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.7) 10%,
+    rgba(0, 0, 0, 0)
+  );
+  color: #ffffff;
+  .fade-bottom {
+    position: relative;
+    bottom: 10.4rem;
+    height: 10.4rem;
+    background-image: -webkit-linear-gradient((transparent), #202020 80%);
+  }
+  .hero {
+    grid-area: hero;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+  }
+  .hero-title {
+    color: #ffffff;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  .hero-info-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 5%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  .description {
+    width: 75vw;
+    margin: 30px 0 40px 0;
+    font-weight: 300;
+  }
+  .actions {
+    button {
+      margin-right: 10px;
+    }
+  }
+}

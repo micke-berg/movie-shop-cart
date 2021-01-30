@@ -1,0 +1,13 @@
+.logo {
+  margin-right: 40px;
+  a {
+    color: var(--accent-color);
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: block;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+  }
+  :hover {
+    cursor: pointer;
+  }
+}

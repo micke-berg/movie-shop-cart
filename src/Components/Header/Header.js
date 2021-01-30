@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import './Header.scss';
 
+import Navbar from '../Navbar/Navbar';
+
 const Header = () => {
   const [handleShow, setHandleShow] = useState(false);
 
@@ -9,9 +11,11 @@ const Header = () => {
       console.log("remove");
     };
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 75) {
         setHandleShow(true);
-      } else setHandleShow(false);
+      } else {
+        setHandleShow(false)
+      };
     });
     return () => {
       window.removeEventListener("scroll", doSomething);
@@ -20,7 +24,7 @@ const Header = () => {
   
   return (
       <header className={`header ${handleShow && "nav-black"}`}>
-        <a href="/" className="accent">Movies...</a>
+        <Navbar />
       </header>
   )
 }
