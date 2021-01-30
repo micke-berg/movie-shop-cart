@@ -1,0 +1,55 @@
+/* PRIMARY BUTTON */
+.primary-button {
+  transition: background 120ms linear;
+  border-radius: var(--button-radius);
+  border: none;
+  padding: 8px 20px;
+  background-color: white;
+  color: var(--base-dark);
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.primary-button:hover {
+  background-color: rgb(200, 200, 200);
+}
+
+/* SECONDARY BUTTON */
+.secondary-ghost-button {
+  border: 1px solid var(--grey-color);
+  border-radius: var(--button-radius);
+  padding: 8px 20px;
+  background: none;
+  color: var(--grey-color);
+  font-size: 1rem;
+  letter-spacing: 2px;
+}
+
+.secondary-ghost-button:hover {
+  border: 1px solid white;
+  color: white;
+}
+
+.secondary-button {
+  transition: background 120ms linear;
+  border: 1px solid rgba(120, 120, 120, 0.2);
+  border-radius: var(--button-radius);
+  padding: 8px 20px;
+  background: rgba(120, 120, 120, 0.4);
+  color: var(--font-color-light);
+  // color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.secondary-button:hover {
+  background: rgba(50, 50, 50, 0.4);
+  border: 1px solid rgba(50, 50, 50, 0.6);
+}
+
+/* DEFAULT BUTTON STYLES */
+.button-container:hover {
+  cursor: pointer;
+}
