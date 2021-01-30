@@ -1,16 +1,13 @@
 .grid-container {
+  position: relative;
   height: 100%;
   display: Grid;
   grid-template-areas:
-    'header'
+    'hero'
     'main'
     'footer';
-  grid-template-rows: 5rem 1fr 5rem;
+  grid-template-rows: 1fr 1fr 100%;
   grid-template-columns: 1fr;
-
-  header {
-    grid-area: header;
-  }
 
   main {
     grid-area: main;
