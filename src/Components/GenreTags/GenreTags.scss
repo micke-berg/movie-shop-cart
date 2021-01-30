@@ -1,0 +1,30 @@
+.genre-tags {
+  position: relative;
+  .genre {
+    height: 100%;
+    position: relative;
+    padding-right: 18px;
+    &:after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 6px;
+      height: 6px;
+      width: 6px;
+      background: #ffffff;
+      border-radius: 50%;
+    }
+  }
+  :last-child {
+    &:after {
+      content: '';
+      position: absolute;
+      top: 8px;
+      right: 6px;
+      height: 6px;
+      width: 6px;
+      background: transparent;
+      border-radius: 50%;
+    }
+  }
+}
