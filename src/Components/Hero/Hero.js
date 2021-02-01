@@ -2,7 +2,7 @@ import React from 'react'
 import './Hero.scss';
 import Button from '../Button/Button';
 
-const Hero = ({ title, backgroundImage , description}) => {
+const Hero = ({ title, backgroundImage , description, addToCart, movie }) => {
   const truncate = (str, n) => {
     return str?.length > n ? str.substring(0, n - 1) + "..." : str;
   };
@@ -20,8 +20,8 @@ const Hero = ({ title, backgroundImage , description}) => {
             {truncate(description, 180)}
             </p>
           <div className="actions">
-            <Button primary label="Add to Cart"/> 
-            <Button secondary label="More Info" />
+          <button className="button-container primary-button" onClick={() => addToCart(movie)} label="Add to Cart">Add to Cart</button>
+            <Button onClick={() => addToCart(movie)} secondary label="More Info" />
           </div>
         </div>
         <div className="fade-bottom"></div>
