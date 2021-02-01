@@ -11,12 +11,13 @@ function App() {
   const movies = data.movies;
 
   const [random, setRandom] = useState(0);
-  const [count, setCount] = useState(0);
   const [filtering, setFiltering] = useState(false);
   const [moviesResult, setMoviesResult] = useState(movies);
   const [genreTitle, setGenreTitle] = useState('');
   const [price, setPriceResult] = useState(0);
   const [sort, setSortResult] = useState('');
+  const [cartItems, setCartItems] = useState(localStorage.getItem("cartItems")
+  ? JSON.parse(localStorage.getItem("cartItems")) : []);
 
   useEffect(() => {
     if (movies.length > 0) {
@@ -26,10 +27,59 @@ function App() {
     }  
   }, []);
 
+  const addToCart = (product) => {
+    const updatedCart = cartItems;
+    let alreadyAddedIndex = -1;
+    if (updatedCart.length > 0) {
+      updatedCart.map((cartItem, index) => {
+        if (cartItem.movie.id === product.id) {
+          alreadyAddedIndex = index;
+          cartItem.count++;
+        }
+      });
+    }
+    if (alreadyAddedIndex === -1) {
+      const newItem = {
+        movie: product,
+        quantity: 1,
+      };
+      updatedCart.push(newItem);
+    } else {
+      updatedCart[alreadyAddedIndex].quantity++;
+    }
+
+    setCartItems([...updatedCart]);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
+  const removeFromCart = (cartItem) => {
+    const updatedCart = cartItems;
+    updatedCart.map((item, index) => {
+      if (item === cartItem) {
+        if (item.quantity > 1) {
+          item.quantity--;
+          
+        } else {
+          updatedCart.splice(index, 1);
+        }
+      }
+    });
+
+    setCartItems([...updatedCart]);
+    localStorage.setItem("cartItems", JSON.stringify(updatedCart));
+  };
+
+    let totalQuantity = 0;
+    cartItems.map((cartItem) => {
+      totalQuantity = totalQuantity + cartItem.quantity
+    });
+
+    const createOrder = (order) => {
+      alert('Create order for ' + order.name);
+    }
+
   const sortMovies = (event) => { 
     const sort = event.target.value;
-
-    console.log(event.target.value);
 
     setMoviesResult( moviesResult.slice().sort((a, b) => (
       sort === "lowest" ?
@@ -39,10 +89,9 @@ function App() {
       ((a.id > b.id) ? 1 : -1)
     )));
     setSortResult(event.target.value)
-  } 
+  };
 
   const filterMovies = (event) => {
-    console.log('mov', event.target.value);
     setGenreTitle(event.target.value);
 
     if(event.target.value === '') {
@@ -54,19 +103,20 @@ function App() {
       setPriceResult(event.target.value);
       setMoviesResult( movies.filter(movie => movie.movieGenre.indexOf(event.target.value) >= 0));
     }
-  }  
-
-  console.log(price);
-  console.log(moviesResult)
+  };
   
   return (
     <>
       <Header 
-        count={count} 
+        // count={count} 
         price={price}
         sort={sort}
         filterMovies={filterMovies}
         sortMovies={sortMovies}
+        cartItems={cartItems}
+        removeFromCart={removeFromCart}
+        totalQuantity={totalQuantity}
+        createOrder={createOrder}
         />
       <GridContainer>
         <Hero 
@@ -75,13 +125,19 @@ function App() {
           description={movies[random].description}
           genres={movies[random].movieGenre}
           releaseDate={movies[random].releaseDate}
+          addToCart={addToCart}
+          movie={movies[random]}
           />
         <main className="main">
           <div className="content">
             <div className="main">
-            <Products movies={moviesResult} filtering={filtering} genreTitle={genreTitle}/>
+            <Products 
+              movies={moviesResult} 
+              filtering={filtering} 
+              genreTitle={genreTitle}
+              addToCart={addToCart}
+              />
             </div>
-            <div className="sidebar">Cart Items</div>
           </div>
         </main>
         <Footer />
