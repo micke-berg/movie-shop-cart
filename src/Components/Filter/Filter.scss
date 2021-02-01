@@ -3,22 +3,79 @@
   justify-content: space-between;
   align-items: center;
   color: var(--font-color-light);
-  margin-left: 2.2rem;
+  margin-left: 1.2rem;
+  transform: scale(0.85);
   .filter-select {
     display: flex;
     width: 100%;
     select {
       border: 1px solid rgba(255, 255, 255, 0.5);
-      background: var(--base-bg-color);
+      background: rgba(0, 0, 0, 1);
       color: var(--font-color-light);
-      padding: 0.25rem 1.2rem 0.25rem 0.3rem;
+      padding: 0.25rem 1.4rem 0.25rem 0.3rem;
       cursor: pointer;
-      :hover {
-        background: transparent;
-      }
     }
     :nth-child(2) {
       margin-left: 22px;
     }
+  }
+  .filter-sort {
+    position: relative;
+  }
+  .custom-arrow1 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-12%, 20%);
+    background: rgba(0, 0, 0, 1);
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+  }
+  .custom-arrow1::before {
+    --size: 0.3em;
+    content: '';
+    position: absolute;
+    top: 8px;
+    right: 7px;
+    height: 0;
+    width: 0;
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid #ffffff;
+  }
+  .filter-genre {
+    position: relative;
+  }
+  .custom-arrow2 {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(-22%, 32%);
+    background: rgba(0, 0, 0, 1);
+    display: block;
+    width: 1rem;
+    height: 1rem;
+    pointer-events: none;
+  }
+  .custom-arrow2::before {
+    --size: 0.3em;
+    content: '';
+    position: absolute;
+    top: 7px;
+    right: 4px;
+    height: 0;
+    width: 0;
+    border-left: var(--size) solid transparent;
+    border-right: var(--size) solid transparent;
+    border-top: var(--size) solid #ffffff;
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .filter {
+    transform: scale(1);
+    margin-left: 2.2rem;
   }
 }

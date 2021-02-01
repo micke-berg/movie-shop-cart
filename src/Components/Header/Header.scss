@@ -6,7 +6,7 @@
   z-index: 99;
   top: 0;
   width: 100vw;
-  height: 70px;
+  height: 48px;
   right: 0px;
   left: 0px;
   align-items: center;
@@ -23,84 +23,8 @@
   background: rgb(20, 20, 20);
 }
 
-// .navbar-container .button-tertiary {
-//   transition: color 100ms linear;
-//   border: none;
-//   padding: 0px;
-//   margin: 0px 10px;
-//   font-family: inherit;
-//   font-size: 14px;
-//   font-weight: 400;
-//   background: none;
-//   color: rgb(230, 230, 230);
-//   outline: none;
-// }
-
-// .navbar-container .button-tertiary:hover {
-//   color: rgb(180, 180, 180);
-//   cursor: pointer;
-// }
-
-// .navbar-container .button-tertiary-active {
-//   font-weight: 500;
-//   color: white;
-// }
-
-// .navbar-container .button-tertiary-active:hover {
-//   color: white;
-//   cursor: unset;
-// }
-
-// .navbar-container svg {
-//   color: white;
-// }
-
-// .nav-element-left {
-//   margin-left: 50px;
-//   width: 300px;
-//   display: flex;
-// }
-
-// .nav-element-right {
-//   display: flex;
-//   position: relative;
-//   margin-right: 60px;
-//   svg {
-//     color: white;
-//   }
-// }
-
-// .notifications-menu {
-//   background-color: transparent;
-//   color: #ffffff;
-//   fill: currentColor;
-//   border: none;
-//   font-size: 1.5em;
-//   line-height: 1;
-//   margin-top: 0.2em;
-//   position: relative;
-//   margin-right: 20px;
-//   cursor: pointer;
-//   svg {
-//     margin: 0;
-//   }
-// }
-
-// .notification-pill {
-//   position: absolute;
-//   top: -10px;
-//   left: 20px;
-//   background-color: #b9090b;
-//   border: none;
-//   color: #fff;
-//   display: inline-block;
-//   font-size: 0.6em;
-//   font-weight: 700;
-//   min-width: 1em;
-//   line-height: 1;
-//   padding: 0.25rem;
-//   text-align: center;
-//   -webkit-border-radius: 1000px;
-//   -moz-border-radius: 1000px;
-//   border-radius: 1000px;
-// }
+@media screen and (min-width: 950px) {
+  .header {
+    height: 68px;
+  }
+}
