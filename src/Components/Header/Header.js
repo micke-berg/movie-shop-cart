@@ -7,7 +7,11 @@ const Header = ({
   count,
   price,
   sortMovies,
-  filterMovies
+  filterMovies,
+  cartItems,
+  removeFromCart,
+  totalQuantity,
+  createOrder
 }) => {
   const [handleShow, setHandleShow] = useState(false);
 
@@ -30,11 +34,14 @@ const Header = ({
   return (
       <header className={`header ${handleShow && "nav-black"}`}>
         <Navbar 
-        count={count} 
-        price={price}
-        filterMovies={filterMovies}
-        sortMovies={sortMovies}
-        />
+          cartItems={cartItems}
+          price={price}
+          filterMovies={filterMovies}
+          sortMovies={sortMovies}
+          removeFromCart={removeFromCart}
+          totalQuantity={totalQuantity}
+          createOrder={createOrder}
+          />
       </header>
   )
 }
