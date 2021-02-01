@@ -12,6 +12,7 @@ const Filter = ({ count, price, genre, filterMovies, sortMovies }) => {
             <option value="lowest">Lowest</option>
             <option value="highest">Highest</option>
           </select>
+          <div className="custom-arrow1"></div>
         </div>
         <div className="filter-genre">
           <select name="" id="" value={genre} onChange={filterMovies} >
@@ -22,6 +23,7 @@ const Filter = ({ count, price, genre, filterMovies, sortMovies }) => {
             <option value="Drama">Drama</option>
             <option value="Crime">Crime</option>
           </select>
+          <div className="custom-arrow2"></div>
         </div>
       </div>
     </div>
