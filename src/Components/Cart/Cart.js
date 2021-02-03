@@ -1,10 +1,14 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import './Cart.scss'
-import Button from '../Button/Button';
+
+import Modal from "react-modal";
+import { Fade, Zoom } from "react-awesome-reveal";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Scrollbars } from "react-custom-scrollbars";
+import Button from '../Button/Button';
 
 const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
+  const [showSubmittedModal, setShowSubmittedModal] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [shakeAnimation, setShakeAnimation] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
@@ -47,8 +51,57 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
     console.log(order);
   }
 
+  const clearOrder = () => {
+    setOrderState(null);
+    // resetCartItems();
+    setTotalPrice(0);
+    localStorage.clear();
+  };
+
+  const closeModal = () => {
+    clearOrder();
+    setShowSubmittedModal(false);
+  };
+
+  const renderThumb = ({ style, ...props }) => {
+    const thumbStyle = {
+      borderRadius: 6,
+      backgroundColor: "rgba(120, 120, 120, 0.9)"
+    };
+    return <div style={{ ...style, ...thumbStyle }} {...props} />;
+  };
+
+  const CustomScrollbars = props => (
+    <Scrollbars
+      // renderThumbHorizontal={renderThumb}
+      renderThumbVertical={renderThumb}
+      {...props}
+    />
+  );
+
+  function useOutsideAlerter(ref) {
+    useEffect(() => {
+      function handleClickOutside(event) {
+        if (ref.current && !ref.current.contains(event.target)) {
+          setShowCart(false);
+        }
+      }
+      document.addEventListener("mousedown", handleClickOutside);
+      return () => {
+        document.removeEventListener("mousedown", handleClickOutside);
+      };
+    }, [ref]);
+  }
+
+  function OutsideAlerter(props) {
+    const wrapperRef = useRef(null);
+    useOutsideAlerter(wrapperRef);
+    return <div ref={wrapperRef}>{props.children}</div>;
+  }
+
   return (
     <div className="cart-container">
+          <OutsideAlerter>
       <div className="cart-icons" onClick={() => setShowCart(!showCart)} >
         {totalQuantity > 0 && <span className={`cart-icon-pill ${shakeAnimation ? 'shake' : ''}`}>{totalQuantity}</span>}
         <ShoppingCartIcon fontSize="medium" className="cart-icon" />
@@ -67,16 +120,69 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
                     the cart
                   </p>
                 )} 
+                {showSubmittedModal && (
+                  <Modal
+                    isOpen={true}
+                    onRequestClose={() => closeModal()}
+                    >
+                    <Zoom>
+                      <div className='bg-dark'>
+                        <div className='order-details'>
+                          <span className='close-modal '>
+                            <button
+                              className='button-close-modal'
+                              onClick={() => closeModal()}>
+                              +
+                            </button>
+                          </span>
+                          <div className='success-message'>
+                            Your order has been placed
+                          </div>
+                          <h2>Order: {Math.floor(Math.random() * 11000 - 6000)}</h2>
+                          <ul>
+                            <li>
+                              <div>Name:</div>
+                              <div>{orderState.name}</div>
+                            </li>
+                            <li>
+                              <div>Email:</div>
+                              <div>{orderState.email}</div>
+                            </li>
+                            <li>
+                              <div>Date:</div>
+                              <div>{new Date().toISOString()}</div>
+                            </li>
+                            <li>
+                              <div>Total:</div>
+                              <div>{totalPrice} KR</div>
+                            </li>
+                            <li>
+                              <div>Cart Items:</div>
+                              <div>
+                                {cartItems.map((item) => (
+                                  <div key={item.movie.id}>
+                                    {item.quantity}
+                                    {" x "}
+                                    {item.movie.name}
+                                  </div>
+                                ))}
+                              </div>
+                            </li>
+                          </ul>
+                        </div>
+                      </div>
+                    </Zoom>
+                  </Modal>
+                )}
                 <div>
-                  <Scrollbars 
-                  style={{ width: 336}}
-                  autoHide
-                  autoHideTimeout={1000}
-                  autoHideDuration={200}
-                  autoHeight
-                  autoHeightMin={0}
-                  autoHeightMax={316}
-                  // thumbMinSize={30}
+                  <CustomScrollbars
+                    style={{ width: 336, }}
+                    // autoHide
+                    // autoHideTimeout={1200}
+                    // autoHideDuration={400}
+                    autoHeight
+                    autoHeightMin={0}
+                    autoHeightMax={316}
                   >
                   <div className="cart cart-item-container" >
                     <ul className="cart-items">
@@ -98,12 +204,11 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
                       ))}
                     </ul>
                   </div>
-                  </Scrollbars>
+                  </CustomScrollbars>
                   {cartItems.length !== 0 && 
                   <div className="total-price cart-footer">
                     <div>Total: $ {totalPrice}</div>
                     {!showCheckout && (
-
                     <Button onClick={() => setShowCheckout(true)} label="Proceed" className="btn btn-primary" />
                     )}
                   </div>}
@@ -115,30 +220,33 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
                   <form onSubmit={createOrders}>
                     <ul className="form-container cart-items">
                       <li>
-                        <label>Email</label>
+                        {/* <label>Email:</label> */}
                         <input 
                           type="email" 
                           name="email"
                           required
                           onChange={handleInput}
+                          placeholder="Email..."
                           />
                       </li>
                       <li>
-                        <label>Name</label>
+                        {/* <label>Name:</label> */}
                         <input 
                           type="text" 
                           name="name"
                           required
                           onChange={handleInput}
+                          placeholder="Name..."
                           />
                       </li>
                       <li>
-                        <label>Address</label>
+                        {/* <label>Address:</label> */}
                         <input 
                           type="text" 
                           name="address"
                           required
                           onChange={handleInput}
+                          placeholder="Address..."
                           />
                       </li>
                       <li className="checkout-button">
@@ -150,9 +258,11 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
               </div>
             )}
             </div>
-          )}
+
+)}
         </div>
       </div>
+</OutsideAlerter>
     </div>
   )
 }

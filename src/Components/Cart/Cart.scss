@@ -20,8 +20,8 @@
 
 .cart-dropdown-container {
   position: absolute;
-  top: 4px;
-  right: -35px;
+  top: 12px;
+  right: 50%;
   width: 100;
   overflow: hidden;
   transition: var(--speed);
@@ -43,11 +43,11 @@
   margin: 20px 20px 25px 20px;
   border-top: 2px solid rgba(255, 255, 255, 0.9);
   border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  border-right: 1px solid rgba(255, 255, 255, 0.1);
-  border-left: 1px solid rgba(255, 255, 255, 0.1);
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  border-left: 1px solid rgba(255, 255, 255, 0.15);
   box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15), -8px 0 20px rgba(0, 0, 0, 0.1),
     10px 10px 20px rgba(0, 0, 0, 0.25);
-  animation: slideDown 350ms ease-out;
+  // animation: slideDown 350ms ease-out;
 }
 
 .cart-icon-pill {
@@ -72,9 +72,9 @@
 .custom-arrow4 {
   position: absolute;
   top: -11px;
-  right: 44px;
+  right: 7px;
   background: transparent;
-  display: block;
+  display: none;
   width: 2rem;
   height: 2rem;
   cursor: pointer;
@@ -104,12 +104,12 @@
     width: 100%;
     li {
       height: 100%;
-      padding: 5px 0px 0px 12px;
+      padding: 5px 1px 0 12px;
       display: flex;
       align-items: center;
       color: rgba(255, 255, 255, 0.75);
       border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-      animation: slideDown 250ms ease-out;
+      // animation: slideDown 250ms ease-out;
       &:hover {
         transition: 0.2s;
         background: rgba(20, 20, 20, 0.9);
@@ -118,9 +118,6 @@
       &:first-child {
         margin-top: -16px;
       }
-      // &:last-child {
-      //   flex: 1;
-      // }
     }
     li:hover img {
       transition: 0.2s;
@@ -142,7 +139,7 @@
   font-weight: 300;
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 0.9);
-  animation: slideDown 300ms ease-out;
+  // animation: slideDown 300ms ease-out;
 }
 
 .cart-footer {
@@ -153,7 +150,7 @@
   font-weight: 300;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 1);
-  animation: slideDown 200ms ease-out;
+  // animation: slideDown 200ms ease-out;
 }
 
 .cart-product-info {
@@ -189,8 +186,8 @@
   margin-bottom: 0px;
   font-weight: 300;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 1);
-  animation: slideDown 300ms ease-out;
+  color: rgba(255, 255, 255, 0.9);
+  // animation: slideDown 300ms ease-out;
 }
 
 .cart-right {
@@ -207,35 +204,47 @@
   align-items: center;
   overflow: hidden;
   width: 336px;
-  height: 270px;
-  margin-top: -22px;
+  height: 245px;
+  margin-top: -0px;
   ul {
+    // animation: slideDown 350ms ease-out;
     width: 336px;
-    margin-left: -50px;
+    margin-left: -51px;
     li {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
       align-items: center;
-
       padding: 6px 0px 6px 12px;
       display: flex;
       align-items: center;
-      color: rgba(255, 255, 255, 0.75);
-      animation: slideDown 250ms ease-out;
+      color: rgba(255, 255, 255, 0.9);
+      // animation: slideDown 250ms ease-out;
       text-align: left;
+    }
+    button {
+      margin: 24px 0 0px 0;
     }
   }
   label {
     font-size: 1rem;
   }
   input {
-    background: rgba(255, 255, 255, 1);
-    color: #ffffff;
-    border: none;
-    width: 95%;
-    padding: 6px 0;
+    background: rgba(255, 255, 255, 0);
+    color: #000;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: var(--button-radius) 2p1;
+    width: 92%;
+    padding: 6px 6px;
+    margin: 0 10px;
     margin-top: 8px;
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 1.05rem;
+    }
   }
 }
 
@@ -290,6 +299,10 @@
   }
   .cart-dropdown-container {
     top: 24px;
-    right: -25px;
+    right: -23px;
+  }
+  .custom-arrow4 {
+    display: block;
+    right: 44px;
   }
 }
