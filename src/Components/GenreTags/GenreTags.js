@@ -1,7 +1,7 @@
 import React from 'react'
 import './GenreTags.scss'
 
-const GenreTags = ({genres}) => {
+const GenreTags = ({ genres, ...props }) => {
   return (
     <div class="genre-tags"> 
     {genres.map(genre => (
