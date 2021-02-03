@@ -1,35 +1,32 @@
 import React, { useState } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars';
 
-const CustomScrollbars = ({props}) => {
-  const [top, setTop] = useState(0);
+const CustomScrollbars = ({ props, style }) => {
 
-const handleScrollFrame = (values) => {
-    // const top = values;
-    setTop(values);
-}
-
-const renderView = ({ style, ...props }) => {
-    const color = top * 255;
-    const customStyle = {
-        backgroundColor: `rgb(${color}, ${color}, ${color})`
+  const renderThumb = ({ style, ...props }) => {
+    const thumbStyle = {
+      borderRadius: 6,
+      backgroundColor: "rgba(120, 120, 120, 0.9)"
     };
-    return (
-        <div {...props} style={{ ...style, ...customStyle }}/>
-    );
-}
-  return (
+    return <div style={{ ...style, ...thumbStyle }} {...props} />;
+  };
+
+  const CustomScrollbars = props => (
     <Scrollbars
-      
-      renderView={renderView}
-      onScrollFrame={handleScrollFrame}
+      renderThumbVertical={renderThumb}
       {...props}
-      />
-      
-      
-      
-    //   {props.children}
-    // </Scrollbars>
+    />
+  );
+  return (
+    <CustomScrollbars
+      // renderTrackHorizontal={props => <div {...props} className="track-horizontal"/>}
+      // renderTrackVertical={props => <div {...props} className="track-vertical"/>}
+      // renderThumbHorizontal={props => <div {...props} className="thumb-horizontal"/>}
+      // renderThumbVertical={props => <div {...props} className="thumb-vertical"/>}
+      // renderView={props => <div {...props} className="view"/>}
+      >
+      {props}
+    </CustomScrollbars>
   )
 }
 
