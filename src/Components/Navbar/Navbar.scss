@@ -5,6 +5,10 @@
   margin: 0 60px 0 30px;
 }
 
+.nav-links {
+  display: none;
+}
+
 .navbar-container .button-tertiary {
   transition: color 100ms linear;
   border: none;
@@ -81,5 +85,8 @@
 @media screen and (min-width: 950px) {
   .navbar-container {
     margin: 0 90px 0 60px;
+  }
+  .nav-links {
+    display: block;
   }
 }

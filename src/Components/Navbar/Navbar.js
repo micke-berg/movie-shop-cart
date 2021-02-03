@@ -18,7 +18,7 @@ const Navbar = ({
     <nav className="navbar-container">
       <div className="nav-element-left">
         <Logo />
-        <a href="/">Home</a>
+        <a className="nav-links" href="/">Home</a>
         <Filter  
           price={price}
           filterMovies={filterMovies}
