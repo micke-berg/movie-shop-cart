@@ -108,7 +108,6 @@ function App() {
   return (
     <>
       <Header 
-        // count={count} 
         price={price}
         sort={sort}
         filterMovies={filterMovies}
@@ -120,13 +119,9 @@ function App() {
         />
       <GridContainer>
         <Hero 
-          title={movies[random].title} 
           backgroundImage={movies[random].image} 
-          description={movies[random].description}
-          genres={movies[random].movieGenre}
-          releaseDate={movies[random].releaseDate}
           addToCart={addToCart}
-          movie={movies[random]}
+          heroMovie={movies[random]}
           />
         <main className="main">
           <div className="content">
