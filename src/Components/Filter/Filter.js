@@ -1,13 +1,13 @@
 import React from 'react'
 import './Filter.scss'
 
-const Filter = ({ count, price, genre, filterMovies, sortMovies }) => {
+const Filter = ({ price, genre, filterMovies, sortMovies }) => {
   return (
     <div className="filter">
       <div className="filter-result"></div>
       <div className="filter-select">
         <div className="filter-sort">
-          <select name="" id="" value={price} onChange={sortMovies}>
+          <select name="" id="" value={price} onChange={sortMovies} className="selected">
             <option value="">Price</option>
             <option value="lowest">Lowest</option>
             <option value="highest">Highest</option>
