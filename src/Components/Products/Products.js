@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from "react-modal";
 import { Fade } from 'react-awesome-reveal';
 import './Products.scss';
 import Button from '../Button/Button';
 import Rating from '../Rating/Rating';
 import GenreTags from '../GenreTags/GenreTags';
+import { connect } from 'react-redux';
+import { fetchProducts } from '../../actions/productActions'
 
-const Products = ({ filtering, movies, genreTitle, addToCart }) => {
+const Products = ({ filtering, movies, genreTitle, addToCart, fetchProducts }) => {
   const [modalProduct, setModalProduct] = useState(null);
 
   const truncate = (str, n) => {
@@ -21,29 +23,38 @@ const Products = ({ filtering, movies, genreTitle, addToCart }) => {
     // clearOrder();
     setModalProduct(null);
   };
-  console.log('object', modalProduct)
+  
+  useEffect(() => {
+    fetchProducts();
+  },[])
 
   return (
     <div className="movie-section">
-      {filtering ? <div className="movie-selection">{genreTitle} movies</div> : <div className="movie-selection">Movie selection</div>}
-      <ul className="movies">
-        {movies.map((movie) =>(
-          <li key={movie.id} >
-            <div className="movie">
-              <a href={`#${movie.id}`}>
-                <img onClick={() => openProductModal(movie)} src={movie.image} alt={movie.title}/>
-              </a>
-              <div className="movie-card-info">
-                <p>{truncate(movie.title, 24)}</p>
-                <div>
-                  <Button onClick={() => addToCart(movie)} label="Add to Cart" className="btn btn-primary">Add to Cart</Button>
-                  <div className="movie-price">$ {movie.price}</div>
+      { !movies ? (<div>Loading...</div>)
+        : 
+        ( <div>
+          {filtering ? <div className="movie-selection">{genreTitle} movies</div> : <div className="movie-selection">Movie selection</div>}
+            <ul className="movies">
+              {movies.map((movie) =>(
+                <li key={movie.id} >
+                  <div className="movie">
+                    <a href={`#${movie.id}`}>
+                      <img onClick={() => openProductModal(movie)} src={movie.image} alt={movie.title}/>
+                    </a>
+                    <div className="movie-card-info">
+                      <p>{truncate(movie.title, 24)}</p>
+                      <div>
+                        <Button onClick={() => addToCart(movie)} label="Add to Cart" className="btn btn-primary">Add to Cart</Button>
+                        <div className="movie-price">$ {movie.price}</div>
+                        </div>
+                    </div>
                   </div>
-              </div>
-            </div>
-          </li>
-        ))}
-      </ul>
+                </li>
+              ))}
+            </ul>
+        </div>
+          )
+        }
       {modalProduct && 
         <Modal isOpen={true} onRequestClose={closeProductModal}
         style={{
@@ -98,4 +109,4 @@ const Products = ({ filtering, movies, genreTitle, addToCart }) => {
   )
 }
 
-export default Products;
+export default connect((state) => ({movies: state.products.items}), {fetchProducts})(Products);

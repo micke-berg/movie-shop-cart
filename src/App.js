@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios';
 import Footer from "./Components/Footer/Footer";
 import GridContainer from "./Components/GridContainer/GridContainer";
 import Header from "./Components/Header/Header";
 import Hero from './Components/Hero/Hero';
 import Products from './Components/Products/Products';
 import data from "./data.json";
+import { Provider } from 'react-redux';
+import store from "./store";
 
 function App() {
   const movies = data.movies;
@@ -19,6 +20,7 @@ function App() {
   const [cartItems, setCartItems] = useState(localStorage.getItem("cartItems")
   ? JSON.parse(localStorage.getItem("cartItems")) : []);
 
+  // Get random movie to display in Here
   useEffect(() => {
     if (movies.length > 0) {
       const randomMovieIndex = Math.floor(Math.random() * (movies.length - 1));
@@ -47,7 +49,6 @@ function App() {
     } else {
       updatedCart[alreadyAddedIndex].quantity++;
     }
-
     setCartItems([...updatedCart]);
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
   };
@@ -64,7 +65,6 @@ function App() {
         }
       }
     });
-
     setCartItems([...updatedCart]);
     localStorage.setItem("cartItems", JSON.stringify(updatedCart));
   };
@@ -80,7 +80,6 @@ function App() {
 
   const sortMovies = (event) => { 
     const sort = event.target.value;
-
     setMoviesResult( moviesResult.slice().sort((a, b) => (
       sort === "lowest" ?
       ((a.price > b.price) ? 1 : -1) : 
@@ -93,7 +92,6 @@ function App() {
 
   const filterMovies = (event) => {
     setGenreTitle(event.target.value);
-
     if(event.target.value === '') {
       setPriceResult(event.target.value)
       setMoviesResult(movies)
@@ -106,38 +104,40 @@ function App() {
   };
   
   return (
-    <>
-      <Header 
-        price={price}
-        sort={sort}
-        filterMovies={filterMovies}
-        sortMovies={sortMovies}
-        cartItems={cartItems}
-        removeFromCart={removeFromCart}
-        totalQuantity={totalQuantity}
-        createOrder={createOrder}
-        />
-      <GridContainer>
-        <Hero 
-          backgroundImage={movies[random].image} 
-          addToCart={addToCart}
-          heroMovie={movies[random]}
+    <Provider store={store} >
+      <>
+        <Header 
+          price={price}
+          sort={sort}
+          filterMovies={filterMovies}
+          sortMovies={sortMovies}
+          cartItems={cartItems}
+          removeFromCart={removeFromCart}
+          totalQuantity={totalQuantity}
+          createOrder={createOrder}
           />
-        <main className="main">
-          <div className="content">
-            <div className="main">
-            <Products 
-              movies={moviesResult} 
-              filtering={filtering} 
-              genreTitle={genreTitle}
-              addToCart={addToCart}
-              />
+        <GridContainer>
+          <Hero 
+            backgroundImage={movies[random].image} 
+            addToCart={addToCart}
+            heroMovie={movies[random]}
+            />
+          <main className="main">
+            <div className="content">
+              <div className="main">
+              <Products 
+                movies={moviesResult} 
+                filtering={filtering} 
+                genreTitle={genreTitle}
+                addToCart={addToCart}
+                />
+              </div>
             </div>
-          </div>
-        </main>
-        <Footer />
-      </GridContainer>
-    </>
+          </main>
+          <Footer />
+        </GridContainer>
+      </>
+    </Provider>
   );
 }
 
