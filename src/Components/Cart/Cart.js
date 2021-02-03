@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react'
 import './Cart.scss'
 
 import Modal from "react-modal";
-import { Fade, Zoom } from "react-awesome-reveal";
+import { Fade } from "react-awesome-reveal";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import { Scrollbars } from "react-custom-scrollbars";
 import Button from '../Button/Button';
@@ -125,7 +125,7 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
                     isOpen={true}
                     onRequestClose={() => closeModal()}
                     >
-                    <Zoom>
+                    <Fade>
                       <div className='bg-dark'>
                         <div className='order-details'>
                           <span className='close-modal '>
@@ -171,7 +171,7 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
                           </ul>
                         </div>
                       </div>
-                    </Zoom>
+                    </Fade>
                   </Modal>
                 )}
                 <div>

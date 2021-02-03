@@ -34,8 +34,8 @@ const Hero = ({ addToCart, heroMovie, backgroundImage }) => {
             {truncate(heroMovie.description, 180)}
             </p>
           <div className="actions">
-          <button className="button-container primary-button" onClick={() => addToCart(heroMovie)} label="Add to Cart">Add to Cart</button>
-            <Button onClick={() => openProductModal(heroMovie)} secondary label="More Info" />
+            <button className="button-container primary-button" onClick={() => addToCart(heroMovie)} label="Add to Cart">Add to Cart</button>
+            <Button onClick={() => openProductModal(heroMovie)} secondary label="More Info"/>
           </div>
         </div>
         <div className="fade-bottom"></div>

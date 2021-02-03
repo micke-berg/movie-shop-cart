@@ -1,7 +1,7 @@
 import React from 'react';
 import './Navbar.scss';
 import Logo from '../Logo/Logo';
-import Search from '../Search/Search';
+// import Search from '../Search/Search';
 import Filter from '../Filter/Filter';
 import Cart from '../Cart/Cart';
 

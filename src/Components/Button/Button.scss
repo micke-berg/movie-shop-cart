@@ -1,6 +1,6 @@
 /* PRIMARY BUTTON */
 .primary-button {
-  transition: background 120ms linear;
+  transition: background 60ms linear;
   border-radius: var(--button-radius);
   border: none;
   padding: 8px 20px;
@@ -32,21 +32,20 @@
 }
 
 .secondary-button {
-  transition: background 120ms linear;
-  border: 1px solid rgba(120, 120, 120, 0.2);
+  transition: background 60ms linear;
+  border: 1px solid rgba(120, 120, 120, 0.4);
   border-radius: var(--button-radius);
   padding: 8px 20px;
-  background: rgba(120, 120, 120, 0.4);
+  background: rgba(120, 120, 120, 0.5);
   color: var(--font-color-light);
-  // color: white;
   font-family: inherit;
   font-size: 1rem;
   font-weight: 500;
 }
 
 .secondary-button:hover {
-  background: rgba(50, 50, 50, 0.4);
-  border: 1px solid rgba(50, 50, 50, 0.6);
+  background: rgba(120, 120, 120, 0.35);
+  border: 1px solid rgba(120, 120, 120, 0.25);
 }
 
 /* DEFAULT BUTTON STYLES */
