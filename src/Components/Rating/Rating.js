@@ -6,33 +6,33 @@ import StarIcon from '@material-ui/icons/Star';
 import StarHalfIcon from '@material-ui/icons/StarHalf';
 import StarOutlineIcon from '@material-ui/icons/StarOutline';
 
-function Rating({ rating }) {
+function Rating({ rating, ...props }) {
   return (
     <div className="rating">
       <span className="accent">
         {' '}
         {/* <i className={rating >= 2 ? 'fa fa-star' : rating >= 1 ? 'fa fa-star-half-o' : 'fa fa-star-o'} /> */}
-        {rating >= 2 ? <StarIcon /> : rating >= 1 ? <StarHalfIcon /> : <StarOutlineIcon />}
+        {rating >= 2 ? <StarIcon fontSize="small" /> : rating >= 1 ? <StarHalfIcon fontSize="small"/> : <StarOutlineIcon fontSize="small"/>}
         {' '}
       </span>
       <span className="accent">
         {' '}
-        {rating >= 4 ? <StarIcon /> : rating >= 3 ? <StarHalfIcon /> : <StarOutlineIcon />}
+        {rating >= 4 ? <StarIcon fontSize="small"/> : rating >= 3 ? <StarHalfIcon fontSize="small"/> : <StarOutlineIcon fontSize="small"/>}
         {' '}
       </span>
       <span className="accent">
         {' '}
-        {rating >= 6 ? <StarIcon /> : rating >= 5 ? <StarHalfIcon /> : <StarOutlineIcon />}
+        {rating >= 6 ? <StarIcon fontSize="small"/> : rating >= 5 ? <StarHalfIcon fontSize="small"/> : <StarOutlineIcon fontSize="small"/>}
         {' '}
       </span>
       <span className="accent">
         {' '}
-        {rating >= 8 ? <StarIcon /> : rating >= 7 ? <StarHalfIcon /> : <StarOutlineIcon />}
+        {rating >= 8 ? <StarIcon fontSize="small"/> : rating >= 7 ? <StarHalfIcon fontSize="small"/> : <StarOutlineIcon fontSize="small"/>}
         {' '}
       </span>
       <span className="accent">
         {' '}
-        {rating >= 10 ? <StarIcon /> : rating >= 9 ? <StarHalfIcon /> : <StarOutlineIcon />}
+        {rating >= 10 ? <StarIcon fontSize="small"/> : rating >= 9 ? <StarHalfIcon fontSize="small"/> : <StarOutlineIcon fontSize="small"/>}
         {' '}
       </span>
     </div>
