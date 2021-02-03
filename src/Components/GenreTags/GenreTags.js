@@ -3,9 +3,9 @@ import './GenreTags.scss'
 
 const GenreTags = ({ genres, ...props }) => {
   return (
-    <div class="genre-tags"> 
+    <div className="genre-tags"> 
     {genres.map(genre => (
-      <span className="genre">{genre}</span>
+      <span key={genre} className="genre">{genre}</span>
       ))}
     </div>
   )
