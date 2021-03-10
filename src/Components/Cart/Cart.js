@@ -1,61 +1,83 @@
 import React, { useState, useEffect, useRef } from 'react'
 import './Cart.scss'
 
-import Modal from "react-modal";
-import { Fade } from "react-awesome-reveal";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import { createOrder, clearOrder, fetchOrders } from "../../actions/orderAction";
+import { removeFromCart, resetCartItems } from "../../actions/cartActions";
+import { connect } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
+import { Fade } from "react-awesome-reveal";
+import Modal from "react-modal";
 import Button from '../Button/Button';
 
-const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
+const Cart = (props) => {
   const [showSubmittedModal, setShowSubmittedModal] = useState(false);
+  const [showCheckout, setShowCheckout] = useState(false);
   const [showCart, setShowCart] = useState(false);
   const [shakeAnimation, setShakeAnimation] = useState(false);
   const [totalPrice, setTotalPrice] = useState(0);
-  const [showCheckout, setShowCheckout] = useState(false);
-  const [orderState, setOrderState] = useState({
-    name: "",
-    email: "",
-    address: "",
-  });
+  const [paymentMethod, setPaymentMethod] = useState('');
+  const paymentMethods = ["MasterCard", "VISA", "PayPal", "American Express", "Discover"];
+
+  Modal.setAppElement('body');
 
   useEffect(() => {
-    setShakeAnimation(true);
-      setTimeout(() => {
-        setShakeAnimation(false);
-      }, 500);
-  },[cartItems]);
+    const randomIndex = Math.floor(Math.random() * (paymentMethods.length - 1));
+    const randomPaymentMethod = paymentMethods[randomIndex];
+    setPaymentMethod(randomPaymentMethod); 
+  }, []);
 
   useEffect(() => {
     let total = 0;
-    cartItems.forEach((item) => {
-      total = total + item.movie.price * item.quantity;
+    props.cartItems.forEach((item) => {
+      total = total + item.price * item.quantity;
       return setTotalPrice(total);
     });
-  }, [cartItems]);
+    setShakeAnimation(true);
+    setTimeout(() => {
+      setShakeAnimation(false);
+    }, 500);
+  }, [props.cartItems]);
 
+  let totalQuantity = 0;
+  props.cartItems.map((cartItem) => {
+    totalQuantity = totalQuantity + cartItem.quantity
+  });
+
+  let customer = {};
   const handleInput = (e) => {
-    setOrderState({ ...orderState, [e.target.name]: e.target.value });
+    customer = { ...customer, [e.target.name]: e.target.value}
+    console.log('HandleInput cart/customer: ', customer)
   }
+
+  let orderDetails = props.cartItems.map((item) => {
+    return(
+      { 
+        MovieId: item.id,     
+        Quantity: item.quantity
+      }
+    ); 
+  });
 
   const createOrders = (e) => {
     e.preventDefault();
 
     const order = {
-      name: orderState.name,
-      email: orderState.email,
-      address: orderState.address,
-      cartItems: cartItems 
+      Email: customer.Email,
+      Customer: customer,
+      TotalPrice: totalPrice,
+      PaymentType: paymentMethod,      
+      OrderDetails: orderDetails,
     }
-    createOrder(order);
-    console.log(order);
+    props.createOrder(order);
+    setShowSubmittedModal(true);
   }
 
   const clearOrder = () => {
-    setOrderState(null);
-    // resetCartItems();
+    customer = {};
+    props.clearOrder();
+    props.resetCartItems();
     setTotalPrice(0);
-    localStorage.clear();
   };
 
   const closeModal = () => {
@@ -68,18 +90,17 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
       borderRadius: 6,
       backgroundColor: "rgba(120, 120, 120, 0.9)"
     };
-    return <div style={{ ...style, ...thumbStyle }} {...props} />;
+    return <div style={{ ...style, ...thumbStyle }} { ...props } />;
   };
 
   const CustomScrollbars = props => (
     <Scrollbars
-      // renderThumbHorizontal={renderThumb}
       renderThumbVertical={renderThumb}
-      {...props}
+      { ...props }
     />
   );
 
-  function useOutsideAlerter(ref) {
+  function useClickOutside(ref) {
     useEffect(() => {
       function handleClickOutside(event) {
         if (ref.current && !ref.current.contains(event.target)) {
@@ -93,178 +114,166 @@ const Cart = ({ cartItems, removeFromCart, totalQuantity, createOrder }) => {
     }, [ref]);
   }
 
-  function OutsideAlerter(props) {
+  function ClickOutsideWrapper(props) {
     const wrapperRef = useRef(null);
-    useOutsideAlerter(wrapperRef);
+    useClickOutside(wrapperRef);
+  
     return <div ref={wrapperRef}>{props.children}</div>;
   }
 
+  console.log('ord', props.order);
+
   return (
     <div className="cart-container">
-          <OutsideAlerter>
-      <div className="cart-icons" onClick={() => setShowCart(!showCart)} >
-        {totalQuantity > 0 && <span className={`cart-icon-pill ${shakeAnimation ? 'shake' : ''}`}>{totalQuantity}</span>}
-        <ShoppingCartIcon fontSize="medium" className="cart-icon" />
-      </div>
-      <div className="cart-dropdown-container" >
-        <div>
-          {showCart && (
-            <div className="cart-dropdown" >
-              <div className="custom-arrow4"></div>
-              <div>
-                {cartItems.length === 0 ? (
-                  <p className='cart cart-header'>Cart is empty</p>
-                    ) : (
-                  <p className='cart cart-header'>
-                    You have {totalQuantity} item{cartItems.length >= 2 ? "s" : ""} in
-                    the cart
-                  </p>
-                )} 
-                {showSubmittedModal && (
-                  <Modal
-                    isOpen={true}
-                    onRequestClose={() => closeModal()}
-                    >
-                    <Fade>
-                      <div className='bg-dark'>
-                        <div className='order-details'>
-                          <span className='close-modal '>
-                            <button
-                              className='button-close-modal'
-                              onClick={() => closeModal()}>
-                              +
-                            </button>
-                          </span>
-                          <div className='success-message'>
-                            Your order has been placed
-                          </div>
-                          <h2>Order: {Math.floor(Math.random() * 11000 - 6000)}</h2>
-                          <ul>
-                            <li>
-                              <div>Name:</div>
-                              <div>{orderState.name}</div>
-                            </li>
-                            <li>
-                              <div>Email:</div>
-                              <div>{orderState.email}</div>
-                            </li>
-                            <li>
-                              <div>Date:</div>
-                              <div>{new Date().toISOString()}</div>
-                            </li>
-                            <li>
-                              <div>Total:</div>
-                              <div>{totalPrice} KR</div>
-                            </li>
-                            <li>
-                              <div>Cart Items:</div>
-                              <div>
-                                {cartItems.map((item) => (
-                                  <div key={item.movie.id}>
-                                    {item.quantity}
-                                    {" x "}
-                                    {item.movie.name}
-                                  </div>
-                                ))}
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-                      </div>
-                    </Fade>
-                  </Modal>
-                )}
+      <ClickOutsideWrapper>
+        <div className="cart-icons" onClick={() => setShowCart(!showCart)} >
+          {totalQuantity > 0 && <span className={`cart-icon-pill ${shakeAnimation ? 'shake' : ''}`}>{totalQuantity}</span>}
+          <ShoppingCartIcon fontSize="medium" className="cart-icon" />
+        </div>
+        <div className="cart-dropdown-container" >
+          <div>
+            {showCart && (
+              <div className="cart-dropdown" >
+                <div className="custom-arrow4"></div>
                 <div>
-                  <CustomScrollbars
-                    style={{ width: 336, }}
-                    // autoHide
-                    // autoHideTimeout={1200}
-                    // autoHideDuration={400}
-                    autoHeight
-                    autoHeightMin={0}
-                    autoHeightMax={316}
-                  >
-                  <div className="cart cart-item-container" >
-                    <ul className="cart-items">
-                      {cartItems.map((item) => (
-                      <li key={item.movie.id}>
-                        <div>
-                          <img src={item.movie.image} alt={item.movie.title}/>
-                        </div>
-                        <div className="cart-product-info">
-                          <div>{item.movie.title}</div>
-                          <div className="cart-right">
-                            <div>
-                              $ {item.movie.price} x {item.quantity}{' '}
-                            </div> 
-                            <button className="cart-remove-button" onClick={() => removeFromCart(item)} >Remove</button>
+                  {props.cartItems.length === 0 ? (
+                    <p className='cart cart-header'>Cart is empty</p>
+                      ) : (
+                    <p className='cart cart-header'>
+                      You have {totalQuantity} item{props.cartItems.length >= 2 ? "s" : ""} in
+                      the cart
+                    </p>
+                  )} 
+                  <div>
+                    <CustomScrollbars
+                      style={{ width: 336, }}
+                      autoHeight
+                      autoHeightMin={0}
+                      autoHeightMax={316}
+                    >
+                    <div className="cart cart-item-container" >
+                      <ul className="cart-items">
+                        {props.cartItems.map((item) => (
+                        <li key={item.id}>
+                          <div>
+                            <img src={item.image} alt={item.title}/>
                           </div>
-                        </div>
-                      </li>
-                      ))}
-                    </ul>
+                          <div className="cart-product-info">
+                            <div>{item.title}</div>
+                            <div className="cart-right">
+                              <div>
+                                $ {item.price} x {item.quantity}{' '}
+                              </div> 
+                              <button className="cart-remove-button" onClick={() => props.removeFromCart(item)} >Remove</button>
+                            </div>
+                          </div>
+                        </li>
+                        ))}
+                      </ul>
+                    </div>
+                    </CustomScrollbars>
+                    {props.cartItems.length !== 0 && 
+                    <div className="total-price cart-footer">
+                      <div>Total: $ {totalPrice}</div>
+                      {!showCheckout && (
+                      <Button onClick={() => setShowCheckout(true)} label="Proceed" className="btn btn-primary" />
+                      )}
+                    </div>}
                   </div>
-                  </CustomScrollbars>
-                  {cartItems.length !== 0 && 
-                  <div className="total-price cart-footer">
-                    <div>Total: $ {totalPrice}</div>
-                    {!showCheckout && (
-                    <Button onClick={() => setShowCheckout(true)} label="Proceed" className="btn btn-primary" />
-                    )}
-                  </div>}
                 </div>
-              </div>
-              {showCheckout && (
-              <div>
-                <div className="checkout-form-container">
-                  <form onSubmit={createOrders}>
-                    <ul className="form-container cart-items">
-                      <li>
-                        {/* <label>Email:</label> */}
-                        <input 
-                          type="email" 
-                          name="email"
-                          required
-                          onChange={handleInput}
-                          placeholder="Email..."
-                          />
-                      </li>
-                      <li>
-                        {/* <label>Name:</label> */}
-                        <input 
-                          type="text" 
-                          name="name"
-                          required
-                          onChange={handleInput}
-                          placeholder="Name..."
-                          />
-                      </li>
-                      <li>
-                        {/* <label>Address:</label> */}
-                        <input 
-                          type="text" 
-                          name="address"
-                          required
-                          onChange={handleInput}
-                          placeholder="Address..."
-                          />
-                      </li>
-                      <li className="checkout-button">
-                        <Button type="submit" label="Checkout" />
-                      </li>
-                    </ul>
-                  </form>
+                {showCheckout && (
+                <div>
+                  <div className="checkout-form-container">
+                    <form onSubmit={createOrders}>
+                      <ul className="form-container cart-items">
+                        <li>
+                          <input 
+                            type="text" 
+                            name="Name"
+                            required
+                            onChange={handleInput}
+                            placeholder="Name..."
+                            />
+                        </li>
+                        <li>
+                          <input 
+                            type="email" 
+                            name="Email"
+                            required
+                            onChange={handleInput}
+                            placeholder="Email..."
+                            />
+                        </li>
+                        <li className="checkout-button">
+                          <Button  type="submit" label="Checkout" />
+                        </li>
+                      </ul>
+                    </form>
+                  </div>
                 </div>
+              )}
               </div>
             )}
-            </div>
-
-)}
+          </div>
         </div>
-      </div>
-</OutsideAlerter>
+      </ClickOutsideWrapper>
+      {showSubmittedModal && (
+        <Modal
+          isOpen={true}
+          onRequestClose={() => closeModal()}
+          style={{
+            overlay: {
+              position: "fixed",
+              zIndex: "200",
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: "rgba(0, 0, 0, 0.75)",
+              overflowY: "auto",
+            },
+            content: {
+              position: "absolute",
+              display: "flex",
+              flexWrap: "wrap",
+              justifyContent: "center",
+              alignContent: "center",
+              top: "50%",
+              left: "50%",
+              "transform": "translate(-50%, -50%)",
+              height: "68%",
+              minHeight: "400px",
+              margin: "10px 0",
+              width: "66vw",
+              border: "none",
+              background: "#242424",
+              padding: "2%",
+            },
+          }}
+          >
+          <Fade>
+            <div className="cart-modal-wrapper">
+              <div className='order-details'>
+                  <button
+                    className='close-order-modal'
+                    onClick={() => closeModal()}>
+                  </button>
+                <div className='success-message'>
+                  Your order has been placed!
+                </div>
+              </div>
+            </div>
+          </Fade>
+        </Modal>
+      )}
     </div>
   )
-}
+};
 
-export default Cart
+export default connect(
+  (state) => ({
+    order: state.order.order,
+    cartItems: state.cart.cartItems,
+  }),
+  { removeFromCart, resetCartItems, createOrder, clearOrder, fetchOrders }
+)(Cart);
