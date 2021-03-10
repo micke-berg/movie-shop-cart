@@ -1,3 +1,7 @@
+# Movie Web Shop using React and Redux
+
+<img width="1345" alt="Skärmavbild 2021-03-10 kl  20 53 38" src="https://user-images.githubusercontent.com/47321557/110689598-29932300-81e3-11eb-8d9f-dc7a850f5aa1.png">
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
