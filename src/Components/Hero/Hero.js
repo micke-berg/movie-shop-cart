@@ -1,14 +1,31 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Hero.scss';
+import { connect } from 'react-redux';
+import { addToCart } from '../../actions/cartActions';
+import { fetchProducts } from '../../actions/productActions'
+
 import Modal from "react-modal";
 import { Fade } from 'react-awesome-reveal';
 import Button from '../Button/Button';
 import Rating from '../Rating/Rating';
-import GenreTags from '../GenreTags/GenreTags';
+// import GenreTags from '../GenreTags/GenreTags';
 
-const Hero = ({ addToCart, heroMovie, backgroundImage }) => {
+const Hero = (props) => {
   const [modalProduct, setModalProduct] = useState(null);
+  const [randomMovie, setRandomMovie] = useState(0);
 
+  async function getRandomMovies(products) {
+    if (products?.length > 0 ) {
+      const randomIndex = await Math.floor(Math.random() * (products.length - 1));
+      const randomIndexMovie = products[randomIndex];
+      setRandomMovie(randomIndexMovie);
+    }
+  }
+  
+  useEffect(() => {
+    getRandomMovies(props.products);
+  },[props.products]);
+  
   const truncate = (str, n) => {
     return str?.length > n ? str.substring(0, n - 1) + "..." : str;
   };
@@ -24,18 +41,18 @@ const Hero = ({ addToCart, heroMovie, backgroundImage }) => {
   return (
     <>
       <div className="hero-section">
-        <div className="hero" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7) 15%, transparent 60%), url(${heroMovie.image})` }}>
+        <div className="hero" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7) 15%, transparent 60%), url(${randomMovie.backdrop})` }}>
         </div>
           <div className="hero-info-wrapper">
             <div className="hero-title">
-              {heroMovie.title}
+              {randomMovie.title}
             </div>
             <p className="description">
-            {truncate(heroMovie.description, 180)}
+            {truncate(randomMovie.description, 180)}
             </p>
           <div className="actions">
-            <button className="button-container primary-button" onClick={() => addToCart(heroMovie)} label="Add to Cart">Add to Cart</button>
-            <Button onClick={() => openProductModal(heroMovie)} secondary label="More Info"/>
+            <button className="button-container primary-button" onClick={() => props.addToCart(randomMovie)} label="Add to Cart">Add to Cart</button>
+            <Button onClick={() => openProductModal(randomMovie)} secondary label="More Info"/>
           </div>
         </div>
         <div className="fade-bottom"></div>
@@ -75,16 +92,16 @@ const Hero = ({ addToCart, heroMovie, backgroundImage }) => {
             <div className="modal-wrapper">
               <button onClick={() => closeProductModal() } className="close-modal" ></button>
               <div className="movie-details">
-                <img src={backgroundImage} alt={heroMovie.title}/>      
+                <img src={randomMovie.image} alt={randomMovie.title}/>      
                 <div className="movie-details-description">
                   <div>
-                      <div className="movie-details-title">{heroMovie.title}</div>
-                  <p>{heroMovie.releaseDate}</p>
+                      <div className="movie-details-title">{randomMovie.title}</div>
+                  <p>{randomMovie.releaseDate}</p>
                   </div>
-                    <GenreTags genres={heroMovie.movieGenre}/>
-                    <Rating rating={heroMovie.rating}/>
-                  <p>{truncate(heroMovie.description, 280)}</p>
-                  <button onClick={() => {addToCart(modalProduct); closeProductModal();}} className="modal-button">Add to cart</button>
+                    {/* <GenreTags genres={randomMovie.movieGenre}/> */}
+                    <Rating rating={randomMovie.rating}/>
+                  <p>{truncate(randomMovie.description, 260)}</p>
+                  <button onClick={() => {props.addToCart(modalProduct); closeProductModal();}} className="modal-button">Add to cart</button>
                 </div>
               </div>
             </div>
@@ -94,4 +111,10 @@ const Hero = ({ addToCart, heroMovie, backgroundImage }) => {
   )
 }
 
-export default Hero
+export default connect(
+  (state) => ({ products: state.products.filteredItems }),
+  {
+    fetchProducts,
+    addToCart,
+  }
+)(Hero);

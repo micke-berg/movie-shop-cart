@@ -1,21 +1,15 @@
 .logo {
-  margin-right: 0;
-  a {
-    color: var(--accent-color);
-    font-size: 1.4rem;
-    font-weight: 700;
-    display: block;
-  }
+  margin-right: 40px;
+  color: var(--accent-color);
+  font-size: 1.6rem;
+  font-weight: 700;
   :hover {
     cursor: pointer;
   }
 }
 
-@media screen and (min-width: 950px) {
+@media screen and (max-width: 780px) {
   .logo {
-    margin-right: 40px;
-    a {
-      font-size: 1.6rem;
-    }
+    margin-right: 0px;
   }
 }

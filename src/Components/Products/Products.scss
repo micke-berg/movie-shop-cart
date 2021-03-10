@@ -1,20 +1,39 @@
 .movie-section {
-  margin-top: 2rem;
+  box-sizing: border-box;
+  position: relative;
+  top: -70px;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  max-width: 1800px;
+  padding: 0 1rem;
+
   .movie-selection {
-    margin-left: 3.2rem;
-    font-size: 1.6rem;
+    text-align: left;
+    width: 100%;
+    margin-bottom: 10px;
+    margin-left: 4%;
+    font-size: 1.3rem;
   }
+
   .movies {
+    position: relative;
     margin-top: 1.2rem;
     display: flex;
+    width: 100%;
+    max-width: 1800px;
     justify-content: center;
     flex-wrap: wrap;
-    align-items: center;
+    padding-left: 0;
     background: var(--base-bg-color);
+
     li {
       border-radius: 16px;
-      height: 30rem;
-      margin: 0rem 0.15rem;
+      height: 28rem;
+      margin: 0rem 0.2rem;
     }
     img {
       max-width: 12rem;
@@ -25,7 +44,6 @@
       flex-direction: column;
       align-items: flex-start;
       transition: 520ms cubic-bezier(0.5, 0, 0.2, 1);
-      // transition-delay: 0.2s;
       background: var(--base-bg-color);
       box-shadow: 0 6px 4px rgba(0, 0, 0, 0.3), -4px -2px 4px rgba(0, 0, 0, 0.2),
         8px 8px 4px rgba(0, 0, 0, 0.2);
@@ -56,6 +74,7 @@
 .modal-wrapper {
   position: relative;
 }
+
 .movie-details {
   color: rgba(255, 255, 255, 0.95);
   display: flex;
@@ -102,18 +121,18 @@
   &::before {
     position: absolute;
     content: '';
-    height: 42px;
-    width: 42px;
+    height: 36px;
+    width: 36px;
     background: rgba(0, 0, 0, 0.4);
     border-radius: 50%;
   }
   &::after {
     position: absolute;
-    top: -2px;
-    left: 15px;
+    top: -3px;
+    left: 13px;
     content: '+';
-    font-size: 2.7rem;
-    font-weight: light;
+    font-size: 2.4rem;
+    font-weight: 300;
     color: rgba(255, 255, 255, 0.95);
     transform: rotate(45deg);
   }
@@ -158,12 +177,6 @@
     transform: translate(-50%, -50%);
     border: none;
     background: #242424;
-    // color: "rgba(255, 255, 255, 1)",
-    // WebkitOverflowScrolling: "touch",
-    // borderRadius: "10px",
-    // outline: "none",
-    // padding: "20px",
-    // opacity: "1",
   }
 }
 
@@ -176,6 +189,14 @@
 
 @media screen and (min-width: 950px) {
   .movie-section {
-    margin-top: 6rem;
+    margin-top: 2rem;
+  }
+}
+@media screen and (max-width: 760px) {
+  .movie {
+    transform: scale(0.9);
+    &:hover {
+      transform: scale(1.1, 1.05);
+    }
   }
 }

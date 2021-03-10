@@ -1,0 +1,87 @@
+/* Order Details */
+
+.orders {
+  position: relative;
+  h2 {
+    font-size: 2.4rem;
+    margin: 0;
+    padding: 0;
+  }
+  .orders-header {
+    height: 40px;
+    width: 45%;
+    min-width: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 40px 0;
+    padding: 20px 0;
+    input {
+      background: rgba(255, 255, 255, 0);
+      color: white;
+      border-top: none;
+      border-left: none;
+      border-right: none;
+      border-bottom: 2px solid rgba(255, 255, 255, 0.8);
+      width: 40%;
+      padding: 6px 6px;
+      margin: 0 20px;
+      // margin-top: 8px;
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.65);
+        font-size: 1rem;
+      }
+    }
+  }
+  .home {
+    position: absolute;
+    top: 31px;
+    left: 60px;
+    color: var(--accent-color);
+    font-size: 1.2rem;
+    font-weight: bold;
+    a {
+    }
+  }
+  // margin-left: 50px;
+  margin-top: 110px;
+  padding: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  background: rgb(39, 39, 39);
+  color: rgba(255, 255, 255, 0.75);
+  padding: 10px;
+  overscroll-behavior-y: scroll;
+  table {
+    padding-bottom: 50px;
+  }
+  tbody tr {
+    background: rgba(20, 20, 20, 0.4);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.9);
+  }
+  tbody > tr:nth-child(odd) {
+    background: rgba(20, 20, 20, 0.8);
+  }
+  td {
+    padding: 50px;
+  }
+  th {
+    text-align: left;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .orders td {
+    padding: 40px;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .orders td {
+    padding: 30px;
+  }
+}
