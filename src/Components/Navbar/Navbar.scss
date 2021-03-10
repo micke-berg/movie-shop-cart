@@ -2,11 +2,12 @@
   display: flex;
   justify-content: space-between;
   width: 100%;
-  margin: 0 60px 0 30px;
+  margin: 0 30px 0 30px;
+  min-width: 430px;
 }
 
 .nav-links {
-  display: none;
+  display: block;
 }
 
 .navbar-container .button-tertiary {
@@ -44,6 +45,7 @@
 .nav-element-left {
   width: 300px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
   a {
     color: white;
@@ -53,6 +55,7 @@
 .nav-element-right {
   display: flex;
   position: relative;
+  right: 20px;
   svg {
     color: white;
   }
@@ -82,11 +85,18 @@
   border-top: var(--size) solid #ffffff;
 }
 
-@media screen and (min-width: 950px) {
+@media screen and (max-width: 950px) {
+  .nav-links {
+    font-size: 0.8rem;
+  }
+}
+@media screen and (max-width: 780px) {
+  .nav-links {
+    display: none;
+  }
+}
+@media screen and (min-width: 680px) {
   .navbar-container {
     margin: 0 90px 0 60px;
-  }
-  .nav-links {
-    display: block;
   }
 }
