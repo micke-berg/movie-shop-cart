@@ -1,112 +1,532 @@
+// Dummy data
+
 {
   "movies": [
     {
       "id": 1,
       "title": "Wonder Woman 1984",
       "image": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
       "description": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
-      "price": 19,
-      "releaseDate": "2020-12-16",
-      "rating": 7.1,
-      "option": 2,
-      "movieGenre": ["Action", "Drama"]
+      "price": 22,
+      "releaseDate": "2021-02-02",
+      "rating": 7.7,
+      "movieGenre": ["Fantasy", "Action", "Adventure"],
+      "genres": [{ "genreId": 1 }, { "genreId": 5 }, { "genreId": 6 }]
     },
     {
       "id": 2,
-      "title": "Jumanji: Level One",
+      "title": "Soul",
       "image": "https://www.themoviedb.org/t/p/w342/mI7sIBqIsCsTjLvuiVVTfvW3FLU.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "description": "Set in 1869, two children receive a mysterious game after their father goes missing in the jungles of Africa. They unravel both the secret of their father’s disappearance and the origin of Jumanji. See how it all began.",
-      "price": 29,
-      "releaseDate": "2021-11-10",
-      "rating": 8.2,
-      "option": 2,
-      "movieGenre": ["Action", "Comedy"]
+      "backdrop": "https://www.themoviedb.org/t/p/original/kf456ZqeC45XTvo6W9pW5clYKfQ.jpg",
+      "description": "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth.",
+      "price": 21,
+      "releaseDate": "2020-12-25",
+      "rating": 8.5,
+      "movieGenre": [
+        "Family",
+        "Animation",
+        "Comedy",
+        "Drama",
+        "Music",
+        "Fantasy"
+      ],
+      "genres": [
+        { "genreId": 3 },
+        { "genreId": 5 },
+        { "genreId": 8 },
+        { "genreId": 9 },
+        { "genreId": 10 }
+      ]
     },
     {
       "id": 3,
       "title": "Honest Thief",
       "price": 25,
       "image": "https://www.themoviedb.org/t/p/w342/zeD4PabP6099gpE0STWJrJrCBCs.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/2M2JxEv3HSpjnZWjY9NOdGgfUd.jpg",
       "description": "A bank robber tries to turn himself in because he's falling in love and wants to live an honest life...but when he realizes the Feds are more corrupt than him, he must fight back to clear his name.",
-      "releaseDate": "2020-09-03",
+      "releaseDate": "2020-09-10",
       "rating": 6.6,
-      "option": 2,
-      "movieGenre": ["Action", "Thriller"]
+      "movieGenre": ["Thriller", "Action", "Drama"],
+      "genres": [
+        { "genreId": 1 },
+        { "genreId": 2 },
+        { "genreId": 3 },
+        { "genreId": 15 }
+      ]
     },
     {
       "id": 4,
-      "title": "Wonder Woman 1984",
-      "image": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "description": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
+      "title": "The Little Things",
+      "image": "https://www.themoviedb.org/t/p/w342/c7VlGCCgM9GZivKSzBgzuOVxQn7.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/vfuzELmhBjBTswXj2Vqxnu5ge4g.jpg",
+      "description": "Deputy Sheriff Joe Deke Deacon joins forces with Sgt. Jim Baxter to search for a serial killer who's terrorizing Los Angeles. As they track the culprit, Baxter is unaware that the investigation is dredging up echoes of Deke's past, uncovering disturbing secrets that could threaten more than his case.",
       "price": 19,
-      "releaseDate": "2020-12-16",
-      "rating": 7.1,
-      "option": 2,
-      "movieGenre": ["Drama"]
+      "releaseDate": "2021-01-27",
+      "rating": 6.4,
+      "movieGenre": ["Thriller", "Crime"],
+      "genres": [{ "genreId": 2 }, { "genreId": 15 }]
     },
     {
       "id": 5,
       "title": "Jumanji: Level One",
       "image": "https://www.themoviedb.org/t/p/w342/mI7sIBqIsCsTjLvuiVVTfvW3FLU.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/sQJNqStqc4U1lHHgHrCjpz3eamx.jpg",
       "description": "Set in 1869, two children receive a mysterious game after their father goes missing in the jungles of Africa. They unravel both the secret of their father’s disappearance and the origin of Jumanji. See how it all began.",
       "price": 29,
       "releaseDate": "2021-11-10",
       "rating": 8.2,
-      "option": 2,
-      "movieGenre": ["Comedy"]
+      "movieGenre": ["Adventure"],
+      "genres": [{ "genreId": 6 }]
     },
     {
       "id": 6,
-      "title": "Honest Thief",
+      "title": "Breach",
       "price": 25,
-      "image": "https://www.themoviedb.org/t/p/w342/zeD4PabP6099gpE0STWJrJrCBCs.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "description": "A bank robber tries to turn himself in because he's falling in love and wants to live an honest life...but when he realizes the Feds are more corrupt than him, he must fight back to clear his name.",
-      "releaseDate": "2020-09-03",
-      "rating": 6.6,
-      "option": 2,
-      "movieGenre": ["Action", "Crime"]
+      "image": "https://www.themoviedb.org/t/p/w342/13B6onhL6FzSN2KaNeQeMML05pS.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/nz8xWrTKZzA5A7FgxaM4kfAoO1W.jpg",
+      "description": "A hardened mechanic must stay awake and maintain an interstellar ark fleeing the dying planet Earth with a few thousand lucky souls on board... the last of humanity. Unfortunately, humans are not the only passengers. A shapeshifting alien creature has taken residence, its only goal is to kill as many people as possible. The crew must think quickly to stop this menace before it destroys mankind.",
+      "releaseDate": "2020-12-17",
+      "rating": 4.8,
+      "movieGenre": ["Science Fiction", "Action"],
+      "genres": [{ "genreId": 1 }, { "genreId": 11 }]
     },
     {
       "id": 7,
-      "title": "Wonder Woman 1984",
-      "image": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "description": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
-      "price": 19,
+      "title": "100% Wolf",
+      "image": "https://www.themoviedb.org/t/p/w342/2VrvxK4yxNCU6KVgo5TADJeBEQu.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/7TxeZVg2evMG42p0uSbMJpWNQ8A.jpg",
+      "description": "Freddy Lupin, heir to a proud family line of werewolves, is in for a shock when on his 14th birthday his first 'warfing' goes awry, turning him into a ferocious poodle. The pack elders give Freddy until the next moonrise to prove he has the heart of a wolf, or risk being cast out forever. With the help of an unlikely ally in a streetwise stray named Batty, Freddy must prove he's 100% Wolf.",
+      "price": 17,
       "releaseDate": "2020-12-16",
-      "rating": 7.1,
-      "option": 2,
-      "movieGenre": ["Comedy"]
+      "rating": 6.3,
+      "movieGenre": ["Family", "Animation", "Fantasy"],
+      "genres": [{ "genreId": 5 }, { "genreId": 7 }, { "genreId": 9 }]
     },
     {
       "id": 8,
-      "title": "Jumanji: Level One",
-      "image": "https://www.themoviedb.org/t/p/w342/mI7sIBqIsCsTjLvuiVVTfvW3FLU.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
-      "description": "Set in 1869, two children receive a mysterious game after their father goes missing in the jungles of Africa. They unravel both the secret of their father’s disappearance and the origin of Jumanji. See how it all began.",
-      "price": 22,
+      "title": "The Croods: A New Age",
+      "image": "https://www.themoviedb.org/t/p/w342/tK1zy5BsCt1J4OzoDicXmr0UTFH.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/cjaOSjsjV6cl3uXdJqimktT880L.jpg",
+      "description": "Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.",
+      "price": 24,
       "releaseDate": "2021-11-10",
-      "rating": 8.2,
-      "option": 2,
-      "movieGenre": ["Action", "Comedy"]
+      "rating": 7.6,
+      "movieGenre": ["Family", "Adventure", "Fantasy", "Animation"],
+      "genres": [
+        { "genreId": 5 },
+        { "genreId": 6 },
+        { "genreId": 7 },
+        { "genreId": 9 }
+      ]
     },
     {
       "id": 9,
+      "title": "Host",
+      "price": 16,
+      "image": "https://www.themoviedb.org/t/p/w342/h7dZpJDORYs5c56dydbrLFkEXpE.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/5TbtcmRySXPAEXBzwhiOYYDQmgv.jpg",
+      "description": "Six friends hire a medium to hold a séance via Zoom during lockdown — but they get far more than they bargained for as things quickly go wrong. When an evil spirit starts invading their homes, they begin to realize they might not survive the night.",
+      "releaseDate": "2020-12-04",
+      "rating": 7.1,
+      "movieGenre": ["Horror", "Mystery"],
+      "genres": [{ "genreId": 4 }, { "genreId": 12 }]
+    },
+    {
+      "id": 10,
+      "title": "The New Mutants",
+      "price": 21,
+      "image": "https://www.themoviedb.org/t/p/w342/xZNw9xxtwbEf25NYoz52KdbXHPM.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/lrNbt21hRirjyTK0SeLA0L4RAVS.jpg",
+      "description": "Five young mutants, just discovering their abilities while held in a secret facility against their will, fight to escape their past sins and save themselves.",
+      "releaseDate": "2020-08-26",
+      "rating": 6.4,
+      "movieGenre": ["Action", "Horror", "Science Fiction"],
+      "genres": [{ "genreId": 1 }, { "genreId": 4 }, { "genreId": 11 }]
+    },
+    {
+      "id": 11,
+      "title": "Roald Dahl's The Witches",
+      "price": 25,
+      "image": "https://www.themoviedb.org/t/p/w342/b1C0FuXp4wiPmHLVKq4kwtDMgK6.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/w1280/8rIoyM6zYXJNjzGseT3MRusMPWl.jpg",
+      "description": "In late 1967, a young orphaned boy goes to live with his loving grandma in the rural Alabama town of Demopolis. As the boy and his grandmother encounter some deceptively glamorous but thoroughly diabolical witches, she wisely whisks him away to a seaside resort. Regrettably, they arrive at precisely the same time that the world's Grand High Witch has gathered.",
+      "releaseDate": "2020-10-25",
+      "rating": 6.8,
+      "movieGenre": [
+        "Horror",
+        "Mystery",
+        "Family",
+        "Adventure",
+        "Fantasy",
+        "Comedy"
+      ],
+      "genres": [
+        { "genreId": 4 },
+        { "genreId": 5 },
+        { "genreId": 6 },
+        { "genreId": 8 },
+        { "genreId": 9 }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "The Rental",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/3ynPnBXQVT2Y0s19fDIPlWKUlxH.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/2gBMBfmQvHeOQQ5PiKiuxVdGs77.jpg",
+      "description": "Two couples on an oceanside getaway grow suspicious that the host of their seemingly perfect rental house may be spying on them. Before long, what should have been a celebratory weekend trip turns into something far more sinister.",
+      "releaseDate": "2020-07-23",
+      "rating": 5.6,
+      "movieGenre": ["Horror", "Thriller"],
+      "genres": [{ "genreId": 2 }, { "genreId": 4 }]
+    },
+    {
+      "id": 13,
+      "title": "The Owners",
+      "price": 13,
+      "image": "https://www.themoviedb.org/t/p/w342/gzFatNrw0lhKD5NxaU6zC7S2KjP.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/xUUtcxWC6H48UCrpRwwSPQz69XC.jpg",
+      "description": "A group of friends think they found the perfect easy score - an empty house with a safe full of cash. But when the elderly couple that lives there comes home early, the tables are suddenly turned. As a deadly game of cat and mouse ensues, the would-be thieves must fight to save themselves from a nightmare they could never have imagined.",
+      "releaseDate": "2020-08-27",
+      "rating": 5.7,
+      "movieGenre": ["Horror", "Thriller"],
+      "genres": [{ "genreId": 2 }, { "genreId": 4 }]
+    },
+    {
+      "id": 14,
+      "title": "Death of Me",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/8F9xUvb1JMWUMkFV2Yq3aiueAbq.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/qBxvZJoM2EJBh2eRWSYTWKZVhcd.jpg",
+      "description": "A couple on holiday on a remote South Pacific island awaken one morning with a hang over and no recollection of what transpired. When playing back a video of the previous night, they see they participated in a local ritual that somehow ends with him murdering her.",
+      "releaseDate": "2020-10-02",
+      "rating": 5.1,
+      "movieGenre": ["Horror", "Thriller"],
+      "genres": [{ "genreId": 2 }, { "genreId": 4 }]
+    },
+    {
+      "id": 15,
+      "title": "The Dig",
+      "price": 25,
+      "image": "https://www.themoviedb.org/t/p/w342/dFDNb9Gk1kyLRcconpj7Mc7C7IL.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/gmP41e2bJcFjTzCQFmMoSvfNbxB.jpg",
+      "description": "As WWII looms, a wealthy widow hires an amateur archaeologist to excavate the burial mounds on her estate. When they make a historic discovery, the echoes of Britain's past resonate in the face of its uncertain future‎.",
+      "releaseDate": "2021-01-14",
+      "rating": 7,
+      "movieGenre": ["Drama", "History"],
+      "genres": [{ "genreId": 3 }, { "genreId": 13 }]
+    },
+    {
+      "id": 16,
+      "title": "Butchers",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/xLbuMxKORru3oTlItLBWpI5WJxR.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/bJCb1wNJ2EMMFIsWeixRlF7XDHA.jpg",
+      "description": "A family of sadistic butchers lives deep in the backcountry. From the dead of winter to the dog days of summer, anyone who crosses their path is dead meat.",
+      "releaseDate": "2021-01-12",
+      "rating": 5.6,
+      "movieGenre": ["Horror"],
+      "genres": [{ "genreId": 4 }]
+    },
+    {
+      "id": 17,
+      "title": "Nuevo Orden",
+      "price": 18,
+      "image": "https://www.themoviedb.org/t/p/w342/v6NodCMzqilx0Xw541P65WFnDfE.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/w1000_and_h563_face/mERIM4O7xJWpusaBM7TtqlAzuBe.jpg",
+      "description": "In the near future, a popular uprising in Mexico City interrupts a wedding held at the home of a wealthy family. After the riots have been quashed, they discover the bride has gone missing and plea with the military to help locate her.",
+      "releaseDate": "2021-01-12",
+      "rating": 6.6,
+      "movieGenre": ["Drama"],
+      "genres": [{ "genreId": 3 }]
+    },
+    {
+      "id": 18,
+      "title": "Shadow in the Cloud",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/t7EUMSlfUN3jUSZUJOLURAzJzZs.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/eCzgK2kMLBMgRCPDB9MthT4aw14.jpg",
+      "description": "A WWII pilot traveling with top secret documents on a B-17 Flying Fortress encounters an evil presence on board the flight.",
+      "releaseDate": "2020-12-31",
+      "rating": 5.9,
+      "movieGenre": ["Horror", "Action", "Drama", "War"],
+      "genres": [
+        { "genreId": 1 },
+        { "genreId": 3 },
+        { "genreId": 4 },
+        { "genreId": 14 }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Tenet",
+      "price": 29,
+      "image": "https://www.themoviedb.org/t/p/w342/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/wzJRB4MKi3yK138bJyuL9nx47y6.jpg",
+      "description": "Armed with only one word - Tenet - and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
+      "releaseDate": "2020-08-22",
+      "rating": 6.4,
+      "movieGenre": ["Horror", "Action", "Drama", "War"],
+      "genres": [
+        { "genreId": 1 },
+        { "genreId": 3 },
+        { "genreId": 4 },
+        { "genreId": 14 }
+      ]
+    }
+  ]
+}
+
+// Dummy data ----------------------------------------------------------------
+
+{
+  "movies": [
+    {
+      "id": 1,
+      "title": "Wonder Woman 1984",
+      "image": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
+      "description": "Wonder Woman comes into conflict with the Soviet Union during the Cold War in the 1980s and finds a formidable foe by the name of the Cheetah.",
+      "price": 22,
+      "releaseDate": "2021-02-02",
+      "rating": 7.7,
+      "genres": [{ "genreId": 1 }, { "genreId": 5 }, { "genreId": 6 }]
+    },
+    {
+      "id": 2,
+      "title": "Soul",
+      "image": "https://www.themoviedb.org/t/p/w342/mI7sIBqIsCsTjLvuiVVTfvW3FLU.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/kf456ZqeC45XTvo6W9pW5clYKfQ.jpg",
+      "description": "Joe Gardner is a middle school teacher with a love for jazz music. After a successful gig at the Half Note Club, he suddenly gets into an accident that separates his soul from his body and is transported to the You Seminar, a center in which souls develop and gain passions before being transported to a newborn child. Joe must enlist help from the other souls-in-training, like 22, a soul who has spent eons in the You Seminar, in order to get back to Earth.",
+      "price": 21,
+      "releaseDate": "2020-12-25",
+      "rating": 8.5,
+      "genres": [
+        { "genreId": 3 },
+        { "genreId": 5 },
+        { "genreId": 8 },
+        { "genreId": 9 },
+        { "genreId": 10 }
+      ]
+    },
+    {
+      "id": 3,
       "title": "Honest Thief",
       "price": 25,
       "image": "https://www.themoviedb.org/t/p/w342/zeD4PabP6099gpE0STWJrJrCBCs.jpg",
-      "backdrop": "https://www.themoviedb.org/t/p/w342/8UlWHLMpgZm9bx6QYh0NFoq67TZ.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/2M2JxEv3HSpjnZWjY9NOdGgfUd.jpg",
       "description": "A bank robber tries to turn himself in because he's falling in love and wants to live an honest life...but when he realizes the Feds are more corrupt than him, he must fight back to clear his name.",
-      "releaseDate": "2020-09-03",
+      "releaseDate": "2020-09-10",
       "rating": 6.6,
-      "option": 2,
-      "movieGenre": ["Action", "Crime"]
+      "genres": [
+        { "genreId": 1 },
+        { "genreId": 2 },
+        { "genreId": 3 },
+        { "genreId": 15 }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "The Little Things",
+      "image": "https://www.themoviedb.org/t/p/w342/c7VlGCCgM9GZivKSzBgzuOVxQn7.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/vfuzELmhBjBTswXj2Vqxnu5ge4g.jpg",
+      "description": "Deputy Sheriff Joe Deke Deacon joins forces with Sgt. Jim Baxter to search for a serial killer who's terrorizing Los Angeles. As they track the culprit, Baxter is unaware that the investigation is dredging up echoes of Deke's past, uncovering disturbing secrets that could threaten more than his case.",
+      "price": 19,
+      "releaseDate": "2021-01-27",
+      "rating": 6.4,
+      "genres": [{ "genreId": 2 }, { "genreId": 15 }]
+    },
+    {
+      "id": 5,
+      "title": "Jumanji: Level One",
+      "image": "https://www.themoviedb.org/t/p/w342/mI7sIBqIsCsTjLvuiVVTfvW3FLU.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/sQJNqStqc4U1lHHgHrCjpz3eamx.jpg",
+      "description": "Set in 1869, two children receive a mysterious game after their father goes missing in the jungles of Africa. They unravel both the secret of their father’s disappearance and the origin of Jumanji. See how it all began.",
+      "price": 29,
+      "releaseDate": "2021-11-10",
+      "rating": 8.2,
+      "genres": [{ "genreId": 6 }]
+    },
+    {
+      "id": 6,
+      "title": "Breach",
+      "price": 25,
+      "image": "https://www.themoviedb.org/t/p/w342/13B6onhL6FzSN2KaNeQeMML05pS.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/nz8xWrTKZzA5A7FgxaM4kfAoO1W.jpg",
+      "description": "A hardened mechanic must stay awake and maintain an interstellar ark fleeing the dying planet Earth with a few thousand lucky souls on board... the last of humanity. Unfortunately, humans are not the only passengers. A shapeshifting alien creature has taken residence, its only goal is to kill as many people as possible. The crew must think quickly to stop this menace before it destroys mankind.",
+      "releaseDate": "2020-12-17",
+      "rating": 4.8,
+      "genres": [{ "genreId": 1 }, { "genreId": 11 }]
+    },
+    {
+      "id": 7,
+      "title": "100% Wolf",
+      "image": "https://www.themoviedb.org/t/p/w342/2VrvxK4yxNCU6KVgo5TADJeBEQu.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/7TxeZVg2evMG42p0uSbMJpWNQ8A.jpg",
+      "description": "Freddy Lupin, heir to a proud family line of werewolves, is in for a shock when on his 14th birthday his first 'warfing' goes awry, turning him into a ferocious poodle. The pack elders give Freddy until the next moonrise to prove he has the heart of a wolf, or risk being cast out forever. With the help of an unlikely ally in a streetwise stray named Batty, Freddy must prove he's 100% Wolf.",
+      "price": 17,
+      "releaseDate": "2020-12-16",
+      "rating": 6.3,
+      "genres": [{ "genreId": 5 }, { "genreId": 7 }, { "genreId": 9 }]
+    },
+    {
+      "id": 8,
+      "title": "The Croods: A New Age",
+      "image": "https://www.themoviedb.org/t/p/w342/tK1zy5BsCt1J4OzoDicXmr0UTFH.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/cjaOSjsjV6cl3uXdJqimktT880L.jpg",
+      "description": "Searching for a safer habitat, the prehistoric Crood family discovers an idyllic, walled-in paradise that meets all of its needs. Unfortunately, they must also learn to live with the Bettermans -- a family that's a couple of steps above the Croods on the evolutionary ladder. As tensions between the new neighbors start to rise, a new threat soon propels both clans on an epic adventure that forces them to embrace their differences, draw strength from one another, and survive together.",
+      "price": 24,
+      "releaseDate": "2021-11-10",
+      "rating": 7.6,
+      "genres": [
+        { "genreId": 5 },
+        { "genreId": 6 },
+        { "genreId": 7 },
+        { "genreId": 9 }
+      ]
+    },
+    {
+      "id": 9,
+      "title": "Host",
+      "price": 16,
+      "image": "https://www.themoviedb.org/t/p/w342/h7dZpJDORYs5c56dydbrLFkEXpE.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/5TbtcmRySXPAEXBzwhiOYYDQmgv.jpg",
+      "description": "Six friends hire a medium to hold a séance via Zoom during lockdown — but they get far more than they bargained for as things quickly go wrong. When an evil spirit starts invading their homes, they begin to realize they might not survive the night.",
+      "releaseDate": "2020-12-04",
+      "rating": 7.1,
+      "genres": [{ "genreId": 4 }, { "genreId": 12 }]
+    },
+    {
+      "id": 10,
+      "title": "The New Mutants",
+      "price": 21,
+      "image": "https://www.themoviedb.org/t/p/w342/xZNw9xxtwbEf25NYoz52KdbXHPM.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/lrNbt21hRirjyTK0SeLA0L4RAVS.jpg",
+      "description": "Five young mutants, just discovering their abilities while held in a secret facility against their will, fight to escape their past sins and save themselves.",
+      "releaseDate": "2020-08-26",
+      "rating": 6.4,
+      "genres": [
+        { "genreId": 1 }, 
+        { "genreId": 4 }, 
+        { "genreId": 11 }
+      ]
+    },
+    {
+      "id": 11,
+      "title": "Roald Dahl's The Witches",
+      "price": 25,
+      "image": "https://www.themoviedb.org/t/p/w342/b1C0FuXp4wiPmHLVKq4kwtDMgK6.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/w1280/8rIoyM6zYXJNjzGseT3MRusMPWl.jpg",
+      "description": "In late 1967, a young orphaned boy goes to live with his loving grandma in the rural Alabama town of Demopolis. As the boy and his grandmother encounter some deceptively glamorous but thoroughly diabolical witches, she wisely whisks him away to a seaside resort. Regrettably, they arrive at precisely the same time that the world's Grand High Witch has gathered.",
+      "releaseDate": "2020-10-25",
+      "rating": 6.8,
+      "genres": [
+        { "genreId": 4 },
+        { "genreId": 5 },
+        { "genreId": 6 },
+        { "genreId": 8 },
+        { "genreId": 9 }
+      ]
+    },
+    {
+      "id": 12,
+      "title": "The Rental",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/3ynPnBXQVT2Y0s19fDIPlWKUlxH.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/2gBMBfmQvHeOQQ5PiKiuxVdGs77.jpg",
+      "description": "Two couples on an oceanside getaway grow suspicious that the host of their seemingly perfect rental house may be spying on them. Before long, what should have been a celebratory weekend trip turns into something far more sinister.",
+      "releaseDate": "2020-07-23",
+      "rating": 5.6,
+      "genres": [{ "genreId": 2 }, { "genreId": 4 }]
+    },
+    {
+      "id": 13,
+      "title": "The Owners",
+      "price": 13,
+      "image": "https://www.themoviedb.org/t/p/w342/gzFatNrw0lhKD5NxaU6zC7S2KjP.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/xUUtcxWC6H48UCrpRwwSPQz69XC.jpg",
+      "description": "A group of friends think they found the perfect easy score - an empty house with a safe full of cash. But when the elderly couple that lives there comes home early, the tables are suddenly turned. As a deadly game of cat and mouse ensues, the would-be thieves must fight to save themselves from a nightmare they could never have imagined.",
+      "releaseDate": "2020-08-27",
+      "rating": 5.7,
+      "genres": [{ "genreId": 2 }, { "genreId": 4 }]
+    },
+    {
+      "id": 14,
+      "title": "Death of Me",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/8F9xUvb1JMWUMkFV2Yq3aiueAbq.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/qBxvZJoM2EJBh2eRWSYTWKZVhcd.jpg",
+      "description": "A couple on holiday on a remote South Pacific island awaken one morning with a hang over and no recollection of what transpired. When playing back a video of the previous night, they see they participated in a local ritual that somehow ends with him murdering her.",
+      "releaseDate": "2020-10-02",
+      "rating": 5.1,
+      "genres": [{ "genreId": 2 }, { "genreId": 4 }]
+    },
+    {
+      "id": 15,
+      "title": "The Dig",
+      "price": 25,
+      "image": "https://www.themoviedb.org/t/p/w342/dFDNb9Gk1kyLRcconpj7Mc7C7IL.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/gmP41e2bJcFjTzCQFmMoSvfNbxB.jpg",
+      "description": "As WWII looms, a wealthy widow hires an amateur archaeologist to excavate the burial mounds on her estate. When they make a historic discovery, the echoes of Britain's past resonate in the face of its uncertain future‎.",
+      "releaseDate": "2021-01-14",
+      "rating": 7,
+      "genres": [{ "genreId": 3 }, { "genreId": 13 }]
+    },
+    {
+      "id": 16,
+      "title": "Butchers",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/xLbuMxKORru3oTlItLBWpI5WJxR.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/bJCb1wNJ2EMMFIsWeixRlF7XDHA.jpg",
+      "description": "A family of sadistic butchers lives deep in the backcountry. From the dead of winter to the dog days of summer, anyone who crosses their path is dead meat.",
+      "releaseDate": "2021-01-12",
+      "rating": 5.6,
+      "genres": [{ "genreId": 4 }]
+    },
+    {
+      "id": 17,
+      "title": "Nuevo Orden",
+      "price": 18,
+      "image": "https://www.themoviedb.org/t/p/w342/v6NodCMzqilx0Xw541P65WFnDfE.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/w1000_and_h563_face/mERIM4O7xJWpusaBM7TtqlAzuBe.jpg",
+      "description": "In the near future, a popular uprising in Mexico City interrupts a wedding held at the home of a wealthy family. After the riots have been quashed, they discover the bride has gone missing and plea with the military to help locate her.",
+      "releaseDate": "2021-01-12",
+      "rating": 6.6,
+      "genres": [{ "genreId": 3 }]
+    },
+    {
+      "id": 18,
+      "title": "Shadow in the Cloud",
+      "price": 14,
+      "image": "https://www.themoviedb.org/t/p/w342/t7EUMSlfUN3jUSZUJOLURAzJzZs.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/eCzgK2kMLBMgRCPDB9MthT4aw14.jpg",
+      "description": "A WWII pilot traveling with top secret documents on a B-17 Flying Fortress encounters an evil presence on board the flight.",
+      "releaseDate": "2020-12-31",
+      "rating": 5.9,
+      "genres": [
+        { "genreId": 1 },
+        { "genreId": 3 },
+        { "genreId": 4 },
+        { "genreId": 14 }
+      ]
+    },
+    {
+      "id": 19,
+      "title": "Tenet",
+      "price": 29,
+      "image": "https://www.themoviedb.org/t/p/w342/k68nPLbIST6NP96JmTxmZijEvCA.jpg",
+      "backdrop": "https://www.themoviedb.org/t/p/original/wzJRB4MKi3yK138bJyuL9nx47y6.jpg",
+      "description": "Armed with only one word - Tenet - and fighting for the survival of the entire world, the Protagonist journeys through a twilight world of international espionage on a mission that will unfold in something beyond real time.",
+      "releaseDate": "2020-08-22",
+      "rating": 6.4,
+      "genres": [
+        { "genreId": 1 },
+        { "genreId": 3 },
+        { "genreId": 4 },
+        { "genreId": 14 }
+      ]
     }
   ]
 }
