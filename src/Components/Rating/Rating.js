@@ -11,7 +11,6 @@ function Rating({ rating, ...props }) {
     <div className="rating">
       <span className="accent">
         {' '}
-        {/* <i className={rating >= 2 ? 'fa fa-star' : rating >= 1 ? 'fa fa-star-half-o' : 'fa fa-star-o'} /> */}
         {rating >= 2 ? <StarIcon fontSize="small" /> : rating >= 1 ? <StarHalfIcon fontSize="small"/> : <StarOutlineIcon fontSize="small"/>}
         {' '}
       </span>
