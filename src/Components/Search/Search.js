@@ -1,9 +1,10 @@
 import React, { useState, useEffect, useRef } from "react";
 import './Search.scss';
-
+import { connect } from 'react-redux';
+import { filterSearch } from '../../actions/productActions';
 import SearchIcon from "@material-ui/icons/Search";
 
-const Search = ({ searchTerm, setSearchTerm }) => {
+const Search = (props) => {
   const [state, setState] = useState("");
   const initial = useRef(true);
 
@@ -14,11 +15,11 @@ const Search = ({ searchTerm, setSearchTerm }) => {
     }
 
     const timer = setTimeout(() => {
-      setSearchTerm(state);
+      props.filterSearch(state);
     }, 500);
 
     return () => clearTimeout(timer);
-  }, [setSearchTerm, state]);
+  }, [state]);
   
   return (
 
@@ -36,4 +37,11 @@ const Search = ({ searchTerm, setSearchTerm }) => {
   )
 }
 
-export default Search
+// export default Search
+
+export default connect(
+  (state) => ({}),
+  {
+    filterSearch
+  }
+)(Search);
