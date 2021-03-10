@@ -4,7 +4,7 @@ import './Logo.scss'
 const Logo = () => {
   return (
     <div className="logo">
-        <a href="/" >MOVIES</a>
+        MOVIES
     </div>
   )
 }
