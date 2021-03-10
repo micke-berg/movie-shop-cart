@@ -1,62 +1,86 @@
 import React, { useState, useEffect } from 'react';
-import Modal from "react-modal";
-import { Fade } from 'react-awesome-reveal';
 import './Products.scss';
+
+import { fetchProducts, fetchGenres } from '../../actions/productActions'
+import { addToCart } from "../../actions/cartActions";
+
+import { connect } from 'react-redux';
+import { Fade } from 'react-awesome-reveal';
+import Modal from "react-modal";
+
 import Button from '../Button/Button';
 import Rating from '../Rating/Rating';
-import GenreTags from '../GenreTags/GenreTags';
-import { connect } from 'react-redux';
-import { fetchProducts } from '../../actions/productActions'
+import Spinner from '../Spinner/Spinner';
 
-const Products = ({ filtering, movies, genreTitle, addToCart, fetchProducts }) => {
-  const [modalProduct, setModalProduct] = useState(null);
+const Products = ({
+  props, 
+  genre,
+  products,
+  fetchProducts,
+  fetchGenres,
+  addToCart
+}) => {
+  const [product, setProduct] = useState(null);
+
+  // if (!props.success) return <Spinner />;
+  // if (error) return <div>Something went wrong...</div>;
+  // console.log('success', props.success);
+
+  useEffect(() => {
+    fetchGenres();
+    fetchProducts();
+  },[])
 
   const truncate = (str, n) => {
     return str?.length > n ? str.substring(0, n - 1) + "..." : str;
   };
 
-  const openProductModal = (movie) => {
-    setModalProduct(movie);
+  const openModal = (product) => {
+    setProduct(product);
+    console.log('open modal: ', product)
   }
 
-  const closeProductModal = () => { 
-    // clearOrder();
-    setModalProduct(null);
+  const closeModal = () => { 
+    setProduct(null);
+    console.log('close modal:')
   };
   
-  useEffect(() => {
-    fetchProducts();
-  },[])
-
   return (
     <div className="movie-section">
-      { !movies ? (<div>Loading...</div>)
-        : 
-        ( <div>
-          {filtering ? <div className="movie-selection">{genreTitle} movies</div> : <div className="movie-selection">Movie selection</div>}
-            <ul className="movies">
-              {movies.map((movie) =>(
-                <li key={movie.id} >
+      { !products ? (
+        <div>
+          {/* Loading... */}
+          <Spinner />
+        </div>
+        ) : ( 
+        <>
+        <ul className="movies">
+          {genre ? <div className="movie-selection">{props.genre}Action movies</div> : <div className="movie-selection">Movie selection</div>}
+              {products.map((product) =>(
+                <li key={product.id} >
                   <div className="movie">
-                    <a href={`#${movie.id}`}>
-                      <img onClick={() => openProductModal(movie)} src={movie.image} alt={movie.title}/>
+                    <a 
+                      href={`#${product.id}`} 
+                      onClick={() => openModal(product)}
+                    >
+                      <img src={product.image} alt={product.title}/>
                     </a>
                     <div className="movie-card-info">
-                      <p>{truncate(movie.title, 24)}</p>
+                      <p>{truncate(product.title, 24)}</p>
                       <div>
-                        <Button onClick={() => addToCart(movie)} label="Add to Cart" className="btn btn-primary">Add to Cart</Button>
-                        <div className="movie-price">$ {movie.price}</div>
-                        </div>
+                        <Button onClick={() => addToCart(product)} label="Add to Cart" className="btn btn-primary" />
+                        <div className="movie-price">$ {product.price}</div>
+                      </div>
                     </div>
                   </div>
                 </li>
               ))}
             </ul>
-        </div>
+            </>
           )
         }
-      {modalProduct && 
-        <Modal isOpen={true} onRequestClose={closeProductModal}
+      {product && 
+        <Modal isOpen={true} onRequestClose={closeModal}
         style={{
           overlay: {
             position: "fixed",
@@ -88,18 +112,27 @@ const Products = ({ filtering, movies, genreTitle, addToCart, fetchProducts }) =
         >
           <Fade duration={200}>
             <div className="modal-wrapper">
-              <button onClick={() => closeProductModal() } className="close-modal" ></button>
+              <button 
+                onClick={() => closeModal()} 
+                className="close-modal" >
+              </button>
               <div className="movie-details">
-                <img src={modalProduct.image} alt={modalProduct.title}/>      
+                <img src={product.image} alt={product.title}/>      
                 <div className="movie-details-description">
                   <div>
-                      <div className="movie-details-title">{modalProduct.title}</div>
-                  <p>{modalProduct.releaseDate}</p>
+                      <div className="movie-details-title">{product.title}</div>
+                  <p>{product.releaseDate}</p>
                   </div>
-                    <GenreTags genres={modalProduct.movieGenre}/>
-                    <Rating rating={modalProduct.rating}/>
-                  <p>{truncate(modalProduct.description, 280)}</p>
-                  <button onClick={() => {addToCart(modalProduct); closeProductModal();}} className="modal-button">Add to cart</button>
+                    <Rating rating={product.rating}/>
+                  <p>{truncate(product.description, 280)}</p>
+                  {console.log('modal: ', product)}
+                  <button 
+                    className="modal-button"
+                    onClick={() => {addToCart(product); 
+                    closeModal();}} 
+                  >
+                    Add to cart
+                  </button>
                 </div>
               </div>
             </div>
@@ -109,4 +142,16 @@ const Products = ({ filtering, movies, genreTitle, addToCart, fetchProducts }) =
   )
 }
 
-export default connect((state) => ({movies: state.products.items}), {fetchProducts})(Products);
+export default connect(
+  (state) => ({ 
+    products: state.products.filteredItems, 
+    success: state.products.success, 
+    genre: state.products.genre, 
+    items: state.products.items 
+  }),
+  {
+    fetchProducts,
+    fetchGenres,
+    addToCart,
+  }
+)(Products);
