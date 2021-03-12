@@ -6,8 +6,8 @@ import { filterProducts, sortProducts, fetchGenres, fetchProducts } from '../../
 
 const Filter = (props) => {
 
-  console.log('Products filter: ', props.products);
-  console.log('Genres filter: ', props.genres);
+  // console.log('Products filter: ', props.products);
+  console.log('Genres filter: ', props.genre);
 
   return (
     <div className="filter">
@@ -39,7 +39,7 @@ const Filter = (props) => {
                 e.target.value)
               } 
             >
-            <option value="">Genre</option>
+            <option value="">Genres</option>
             {/* {props.genres.map((genre, i) => (
             <option value={genre.id} key={genre.id}>
               {genre.name}
