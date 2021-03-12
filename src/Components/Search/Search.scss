@@ -1,58 +1,95 @@
-.search {
-  // position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  pointer-events: none;
+.search-content {
+  position: relative;
+  background: transparent;
+  width: 24vw;
+  padding: 0em;
+  margin-right: 96px;
   color: #ffffff;
-  margin-right: 20px;
+}
 
-  input {
-    position: relative;
-    font-weight: 300;
-    font-size: 14px;
-    height: 37px;
-    width: 3%;
+.search {
+  --size: 16px;
+  display: flex;
+  position: relative;
+  padding: 4px;
+  margin-left: auto;
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 0;
+  overflow: hidden;
+  font-size: 1rem;
+  width: var(--size);
+  height: var(--size);
+  transition: width 400ms ease;
+  ::placeholder {
+    /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: rgba(255, 255, 255, 0.85);
+    opacity: 1; /* Firefox */
+  }
+}
+
+.search__input {
+  border: 0;
+  padding: 0.25em 2em;
+  flex-grow: 1;
+  outline: 0;
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  color: #fff;
+  opacity: 0;
+  cursor: pointer;
+  transform-origin: left;
+  :placeholder {
+    color: #fff;
+  }
+}
+
+.search__button {
+  position: absolute;
+  font-size: 1.5rem;
+  margin-left: auto;
+  background: 0;
+  border: 0;
+  cursor: pointer;
+  transition: background 200ms ease-out;
+  width: calc(var(--size));
+  height: 100%;
+  color: #fff;
+}
+
+.search:focus-within {
+  width: 90%;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  .search__input {
+    opacity: 1;
+    z-index: initial;
+    cursor: initial;
+    width: calc(100% - var(--size));
+    padding-right: 20px;
+  }
+  .search__button {
     background: transparent;
-    color: #ffffff;
-    appearance: none;
-    border: 0;
-    border: 2px solid rgba(grey, 0.4);
-    outline: none;
-    border-radius: 37px;
-    padding: 0 10px;
-    pointer-events: all;
-    transition: border 0.25s ease, width 0.125s ease 0.125s;
-
+    color: white;
+    &:hover,
     &:focus {
-      border: 2px solid var(--accent);
-      width: 30%;
-    }
-
-    display: flex;
-    align-items: center;
-    svg {
-      color: white;
-      cursor: pointer;
-    }
-    @media (max-width: 700px) {
-      display: none;
-    }
-    .searchIcon {
-      cursor: pointer;
-      background-color: transparent;
-      border: 0;
       outline: 0;
-      height: 32px;
-      width: 32px;
-      padding: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      img {
-        filter: brightness(0) invert(1);
-        width: 16px;
-      }
     }
+  }
+}
+
+.search-icon {
+  position: absolute;
+  top: -3px;
+  right: -6px;
+}
+
+@media screen and (max-width: 950px) {
+  .search {
+    transform: scale(0.8);
   }
 }
