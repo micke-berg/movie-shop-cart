@@ -111,20 +111,6 @@ export const filterProducts = (products, genre) => (dispatch) => {
 //   });
 // };
 
-export const filterSearch = (products, searchTerm) => (dispatch) => {
-  console.log('FILTER_BY_SEARCH: ', searchTerm);
-  dispatch({
-    type: FILTER_BY_SEARCH,
-    payload: {
-      searchResult: 'search'
-      // searchTerm === ""
-      //     ? products
-      //     : products.filter((x) => x.genres.indexOf(genre) >= 0),
-    },
-  });
-};
-
-
 // const filterGenre = (event) => {
 //   console.log(event.target.value);
 //   if (event.target.value === "") {
@@ -145,3 +131,24 @@ export const filterSearch = (products, searchTerm) => (dispatch) => {
 //     });
 //   }
 // };
+
+export const filterSearch = (products, searchTerm) => (dispatch) => {
+  // const searchTerm = "" 
+  // console.log('FILTER_BY_SEARCH: ', searchTerm);
+
+  // const endpoint = searchTerm
+  // ? `${SEARCH_BASE_URL}${searchTerm}`
+  // : `${API_URL}/products`;
+  
+  dispatch({
+    type: FILTER_BY_SEARCH,
+    payload: {
+      searchResult: 'search'
+      // searchTerm === ""
+      //     ? products
+      //     : products.filter((x) => x.genres.indexOf(genre) >= 0),
+    },
+  });
+};
+
+
