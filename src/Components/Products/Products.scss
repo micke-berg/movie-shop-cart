@@ -8,23 +8,20 @@
   align-items: center;
   justify-content: center;
   width: 100vw;
-  max-width: 1800px;
-  padding: 0 1rem;
+  padding-left: 15px;
 
   .movie-selection {
     text-align: left;
     width: 100%;
     margin-bottom: 10px;
-    margin-left: 4%;
     font-size: 1.3rem;
   }
 
   .movies {
     position: relative;
-    margin-top: 1.2rem;
+    margin: 1.2rem 4% 0 4%;
     display: flex;
     width: 100%;
-    max-width: 1800px;
     justify-content: center;
     flex-wrap: wrap;
     padding-left: 0;
