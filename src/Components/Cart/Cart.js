@@ -47,7 +47,6 @@ const Cart = (props) => {
   let customer = {};
   const handleInput = (e) => {
     customer = { ...customer, [e.target.name]: e.target.value}
-    console.log('HandleInput cart/customer: ', customer)
   }
 
   let orderDetails = props.cartItems.map((item) => {
@@ -120,8 +119,6 @@ const Cart = (props) => {
   
     return <div ref={wrapperRef}>{props.children}</div>;
   }
-
-  console.log('ord', props.order);
 
   return (
     <div className="cart-container">
