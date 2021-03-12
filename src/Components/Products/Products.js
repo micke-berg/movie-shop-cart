@@ -22,12 +22,8 @@ const Products = ({
 }) => {
   const [product, setProduct] = useState(null);
 
-  // if (!props.success) return <Spinner />;
-  // if (error) return <div>Something went wrong...</div>;
-  // console.log('success', props.success);
-
   useEffect(() => {
-    fetchGenres();
+    // fetchGenres();
     fetchProducts();
   },[])
 
@@ -49,7 +45,6 @@ const Products = ({
     <div className="movie-section">
       { !products ? (
         <div>
-          {/* Loading... */}
           <Spinner />
         </div>
         ) : ( 
