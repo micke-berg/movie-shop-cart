@@ -48,7 +48,7 @@ const Hero = (props) => {
               {randomMovie.title}
             </div>
             <p className="description">
-            {truncate(randomMovie.description, 180)}
+            {truncate(randomMovie.description, 230)}
             </p>
           <div className="actions">
             <button className="button-container primary-button" onClick={() => props.addToCart(randomMovie)} label="Add to Cart">Add to Cart</button>
@@ -100,7 +100,7 @@ const Hero = (props) => {
                   </div>
                     {/* <GenreTags genres={randomMovie.movieGenre}/> */}
                     <Rating rating={randomMovie.rating}/>
-                  <p>{truncate(randomMovie.description, 260)}</p>
+                  <p>{truncate(randomMovie.description, 280)}</p>
                   <button onClick={() => {props.addToCart(modalProduct); closeProductModal();}} className="modal-button">Add to cart</button>
                 </div>
               </div>
