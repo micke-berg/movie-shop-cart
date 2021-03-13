@@ -10,7 +10,7 @@ const Header = () => {
       console.log("remove");
     };
     window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 80) {
         setHandleShow(true);
       } else setHandleShow(false);
     });
