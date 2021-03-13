@@ -120,6 +120,36 @@ const Cart = (props) => {
     return <div ref={wrapperRef}>{props.children}</div>;
   }
 
+  const cartModalStyles = {
+    overlay: {
+      position: "fixed",
+      zIndex: "200",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.75)",
+      overflowY: "auto",
+    },
+    content: {
+      position: "absolute",
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      alignContent: "center",
+      top: "50%",
+      left: "50%",
+      "transform": "translate(-50%, -50%)",
+      height: "68%",
+      minHeight: "400px",
+      margin: "10px 0",
+      width: "66vw",
+      border: "none",
+      background: "#242424",
+      padding: "2%",
+    },
+  }
+
   return (
     <div className="cart-container">
       <ClickOutsideWrapper>
@@ -218,35 +248,7 @@ const Cart = (props) => {
         <Modal
           isOpen={true}
           onRequestClose={() => closeModal()}
-          style={{
-            overlay: {
-              position: "fixed",
-              zIndex: "200",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.75)",
-              overflowY: "auto",
-            },
-            content: {
-              position: "absolute",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              alignContent: "center",
-              top: "50%",
-              left: "50%",
-              "transform": "translate(-50%, -50%)",
-              height: "68%",
-              minHeight: "400px",
-              margin: "10px 0",
-              width: "66vw",
-              border: "none",
-              background: "#242424",
-              padding: "2%",
-            },
-          }}
+          style={cartModalStyles}
           >
           <Fade>
             <div className="cart-modal-wrapper">

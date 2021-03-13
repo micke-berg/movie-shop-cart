@@ -38,6 +38,35 @@ const Hero = (props) => {
     setModalProduct(null);
   };
 
+  const heroModalStyles = {
+    overlay: {
+      position: "fixed",
+      zIndex: "200",
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: "rgba(0, 0, 0, 0.75)",
+      overflowY: "auto",
+    },
+    content: {
+      position: "absolute",
+      display: "flex",
+      flexWrap: "wrap",
+      justifyContent: "center",
+      top: "50%",
+      left: "50%",
+      "transform": "translate(-50%, -50%)",
+      height: "68%",
+      minHeight: "400px",
+      margin: "10px 0",
+      width: "66vw",
+      border: "none",
+      background: "#242424",
+      padding: "2%",
+    },
+  }
+
   return (
     <>
       <div className="hero-section">
@@ -58,35 +87,10 @@ const Hero = (props) => {
         <div className="fade-bottom"></div>
       </div>
       {modalProduct && 
-        <Modal isOpen={true} onRequestClose={closeProductModal}
-          style={{
-            overlay: {
-              position: "fixed",
-              zIndex: "200",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: "rgba(0, 0, 0, 0.75)",
-              overflowY: "auto",
-            },
-            content: {
-              position: "absolute",
-              display: "flex",
-              flexWrap: "wrap",
-              justifyContent: "center",
-              top: "50%",
-              left: "50%",
-              "transform": "translate(-50%, -50%)",
-              height: "68%",
-              minHeight: "400px",
-              margin: "10px 0",
-              width: "66vw",
-              border: "none",
-              background: "#242424",
-              padding: "2%",
-            },
-          }}
+        <Modal 
+          isOpen={true} 
+          onRequestClose={closeProductModal}
+          style={heroModalStyles}
         >
           <Fade duration={200}>
             <div className="modal-wrapper">
