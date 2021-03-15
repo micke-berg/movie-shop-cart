@@ -11,6 +11,7 @@ import Modal from "react-modal";
 import Button from '../Button/Button';
 import Rating from '../Rating/Rating';
 import Spinner from '../Spinner/Spinner';
+import GenreTags from '../GenreTags/GenreTags';
 
 const Products = ({
   props, 
@@ -23,8 +24,8 @@ const Products = ({
   const [product, setProduct] = useState(null);
 
   useEffect(() => {
-    // fetchGenres();
     fetchProducts();
+    fetchGenres();
   },[])
 
   const truncate = (str, n) => {
@@ -33,12 +34,10 @@ const Products = ({
 
   const openModal = (product) => {
     setProduct(product);
-    console.log('open modal: ', product)
   }
 
   const closeModal = () => { 
     setProduct(null);
-    console.log('close modal:')
   };
 
   const productModalStyles = {
@@ -75,6 +74,7 @@ const Products = ({
       { !products ? (
         <div>
           <Spinner />
+          <p>Loading...</p>
         </div>
         ) : ( 
         <>
@@ -121,10 +121,12 @@ const Products = ({
                   <div>
                       <div className="movie-details-title">{product.title}</div>
                   <p>{product.releaseDate}</p>
+                    <GenreTags
+                      genres={product.genres}
+                    />
                   </div>
                     <Rating rating={product.rating}/>
                   <p>{truncate(product.description, 280)}</p>
-                  {console.log('modal: ', product)}
                   <button 
                     className="modal-button"
                     onClick={() => {addToCart(product); 
@@ -145,7 +147,7 @@ export default connect(
   (state) => ({ 
     products: state.products.filteredItems, 
     success: state.products.success, 
-    genre: state.products.genre, 
+    genre: state.products.genres, 
     items: state.products.items 
   }),
   {
