@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import './Filter.scss';
 
 import { connect } from 'react-redux';
@@ -6,8 +6,8 @@ import { filterProducts, sortProducts, fetchGenres, fetchProducts } from '../../
 
 const Filter = (props) => {
 
-  // console.log('Products filter: ', props.products);
-  console.log('Genres filter: ', props.genre);
+  // console.log('Products filter: ', props.filteredProducts);
+  console.log('Genres in filter: ', props.genres);
 
   return (
     <div className="filter">
@@ -72,7 +72,7 @@ export default connect(
   (state) => ({
     size: state.products.size,
     sort: state.products.sort,
-    genre: state.products.genres,
+    genres: state.products.genres, 
     products: state.products.items,
     movies: state.products.movies,
     filteredProducts: state.products.filteredItems,
@@ -80,7 +80,7 @@ export default connect(
   {
     filterProducts,
     sortProducts,
-    fetchGenres, 
+    fetchGenres,
     fetchProducts
   }
 )(Filter);
