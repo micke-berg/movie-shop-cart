@@ -1,18 +1,23 @@
 .spinner {
-  border: 5px solid rgba(255, 255, 255, 0.1);
-  border-top: 5px solid var(--accent-color);
+  position: fixed;
+  z-index: 999;
+  top: 40%;
+  left: calc(50% - 45px);
+  transform: translate(-50%, -50%);
+  width: 7em;
+  height: 7em;
+  margin: 4em auto 0 auto;
   border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 0.8s ease infinite;
-  margin: 20px auto;
+  border-left: solid 8px var(--accent-color);
+  border-top: solid 8px transparent;
+  animation: spin 0.9s linear infinite;
+}
 
-  @keyframes spin {
-    0% {
-      transform: rotate(0deg);
-    }
-    100% {
-      transform: rotate(360deg);
-    }
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
   }
 }
