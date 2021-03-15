@@ -3,9 +3,9 @@ import axios from "axios";
 
 export const fetchOrders = () => async  (dispatch) => {
   await axios.get("/order")
-    .then((data) => {
-      console.log('fetchOrders: ', data.data);
-      dispatch({ type: FETCH_ORDERS, payload: data.data.data });
+    .then((res) => {
+      console.log('fetchOrders: ', res.data);
+      dispatch({ type: FETCH_ORDERS, payload: res.data.data });
     }, (error) => {
       console.log(error);
     }
