@@ -101,6 +101,9 @@ const Hero = (props) => {
                   <div>
                       <div className="movie-details-title">{randomMovie.title}</div>
                   <p>{randomMovie.releaseDate}</p>
+                    {randomMovie.genres.map((genre) => (
+                        <p>{genre.genreId}</p>
+                      ))}
                   </div>
                     {/* <GenreTags genres={randomMovie.movieGenre}/> */}
                     <Rating rating={randomMovie.rating}/>
