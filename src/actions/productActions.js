@@ -2,12 +2,12 @@ import { FETCH_PRODUCTS, FETCH_GENRES, FILTER_PRODUCTS_BY_GENRE, ORDER_PRODUCTS_
 import axios from "axios";
 
 export const fetchProducts = () => async (dispatch) => {
-  await axios.get("/movie")
-  .then((data) => {
-    console.log('fetchProducts:', data.data);
+await axios.get("/movie")
+  .then((res) => {
+    console.log('fetchProducts:', res.data);
       dispatch({
         type: FETCH_PRODUCTS,
-        payload: data.data.data,
+        payload: res.data.data,
       });
     }, (error) => {
     console.log(error);
@@ -16,11 +16,12 @@ export const fetchProducts = () => async (dispatch) => {
 
 export const fetchGenres = () => async (dispatch) => {
   await axios.get("/genre")
-  .then((data) => {
-      console.log('fetchGenres:', data.data);
+  .then((res) => {
+      console.log('fetchGenres:', res.data);
     dispatch({ 
       type: FETCH_GENRES, 
-      payload: data.data.data});
+      payload: res.data.data,
+    });
   }, (error) => {
     console.log(error);
   })
@@ -58,32 +59,32 @@ export const sortProducts = (filteredProducts, sort) => (dispatch) => {
 // TODO get this to work
 export const filterProducts = (products, genre) => (dispatch) => {
   console.log('FILTER_PRODUCTS_BY_GENRE: ', genre);
-  console.log('FILTER_PRODUCTS_BY_GENRE: ', products.movieGenres);
-  const genreList = genre.slice();
-  let genre_array = [];
+  console.log('FILTER_PRODUCTS_BY_GENRE: ', products);
+  // // const genreList = genre.slice();
+  // let genre_array = [];
   
-  genreList.filter(({id}) => products.includes(id))
-    .map(({name})  => name);
-    console.log(genreList);
+  // // genreList.filter(({id}) => products.includes(id))
+  // //   .map(({name})  => name);
+  // //   console.log(genreList);
 
-  genre.forEach(function(element) {
-    if (products.includes(element.id)) {
-      genre_array.push(element.name)
-    }
-  });
-  alert(genre_array);
+  // // genre.forEach(function(element) {
+  // //   if (products.includes(element.id)) {
+  // //     genre_array.push(element.name)
+  // //   }
+  // // });
+  // alert(genre_array);
 
-  console.log(genre.filter(g => products.includes(g.id)).map(g => g.name))
+  // console.log(genre.filter(g => products.includes(g.id)).map(g => g.name))
 
   // filter and a map - shorthand
   dispatch({
     type: FILTER_PRODUCTS_BY_GENRE,
     payload: {
       genres: genre,
-      items:
-        genre === ""
-          ? products
-          : products.filter((x) => x.movieGenres.indexOf(genre) >= 0),
+      items: "hej"
+        // genre === ""
+        //   ? products
+        //   : products.filter((x) => x.movies.indexOf(genre) >= 0),
       // genreTitle: genre === ""
       // ? products
       // : products.filter((x) => x.genres.indexOf(genre) >= 0),
