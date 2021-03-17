@@ -1,13 +1,24 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './Filter.scss';
 
 import { connect } from 'react-redux';
-import { filterProducts, sortProducts, fetchGenres, fetchProducts } from '../../actions/productActions';
+import { sortProductsAction } from '../../actions/productActions';
+import { filterProductsByGenreAction } from '../../actions/genreActions';
 
 const Filter = (props) => {
 
-  // console.log('Products filter: ', props.filteredProducts);
-  console.log('Genres in filter: ', props.genres);
+  const getGenres = (genres) => {
+    if (genres) {
+      return genres.map((genre, i) => (
+        <option value={genre.id} key={genre.id}>
+          {genre.name}
+        </option>
+        )
+      )
+    }else { 
+      return <option>No genres found</option>
+    }
+  }
 
   return (
     <div className="filter">
@@ -34,32 +45,13 @@ const Filter = (props) => {
           <select 
             value={props.genre} 
             onChange={(e) => 
-              props.filterProducts(
+              props.filterProductsByGenre(
                 props.products, 
                 e.target.value)
               } 
             >
-            <option value="">Genres</option>
-            {/* {props.genres.map((genre, i) => (
-            <option value={genre.id} key={genre.id}>
-              {genre.name}
-            </option>
-            ))} */}
-            {/* <option value="1">Action</option>
-            <option value="2">Thriller</option>
-            <option value="3">Drama</option>
-            <option value="4">Horror</option>
-            <option value="5">Fantasy</option>
-            <option value="6">Adventure</option>
-            <option value="7">Animation</option>
-            <option value="8">Comedy</option>
-            <option value="9">Family</option>
-            <option value="10">Music</option>
-            <option value="11">Fiction</option>
-            <option value="12">Science</option>
-            <option value="13">Mystery</option>
-            <option value="14">History</option>
-            <option value="15">War</option> */}
+              <option value="">Genres</option>
+            {getGenres(props.genres)}
           </select>
           <div className="custom-arrow2"></div>
         </div>
@@ -68,19 +60,16 @@ const Filter = (props) => {
   )
 };
 
-export default connect(
-  (state) => ({
-    size: state.products.size,
-    sort: state.products.sort,
-    genres: state.products.genres, 
+const mapStateToProps = ( state ) => ({
     products: state.products.items,
-    movies: state.products.movies,
     filteredProducts: state.products.filteredItems,
-  }),
-  {
-    filterProducts,
-    sortProducts,
-    fetchGenres,
-    fetchProducts
-  }
-)(Filter);
+    sort: state.products.sort,
+    genres: state.genres.genres, 
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  filterProductsByGenre: (products, genre) => dispatch(filterProductsByGenreAction(products, genre)),
+  sortProducts: (filteredProducts, sort) => dispatch(sortProductsAction(filteredProducts, sort)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Filter)
