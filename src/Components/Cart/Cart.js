@@ -2,8 +2,8 @@ import React, { useState, useEffect, useRef } from 'react'
 import './Cart.scss'
 
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { createOrder, clearOrder, fetchOrders } from "../../actions/orderAction";
-import { removeFromCart, resetCartItems } from "../../actions/cartActions";
+import { createOrderAction, clearOrderAction, fetchOrdersAction } from "../../actions/orderAction";
+import { removeFromCartAction, resetCartItemsAction } from "../../actions/cartActions";
 import { connect } from "react-redux";
 import { Scrollbars } from "react-custom-scrollbars";
 import { Fade } from "react-awesome-reveal";
@@ -269,10 +269,17 @@ const Cart = (props) => {
   )
 };
 
-export default connect(
-  (state) => ({
-    order: state.order.order,
-    cartItems: state.cart.cartItems,
-  }),
-  { removeFromCart, resetCartItems, createOrder, clearOrder, fetchOrders }
-)(Cart);
+const mapStateToProps = ( state ) => ({ 
+  order: state.order.order,
+  cartItems: state.cart.cartItems,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  removeFromCart: (item) => dispatch(removeFromCartAction(item)),
+  resetCartItems: () => dispatch(resetCartItemsAction()),
+  createOrder: (order) => dispatch(createOrderAction(order)),
+  clearOrder: () => dispatch(clearOrderAction()),
+  fetchOrders: () => dispatch(fetchOrdersAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart)

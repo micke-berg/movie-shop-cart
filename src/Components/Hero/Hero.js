@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import './Hero.scss';
 import { connect } from 'react-redux';
-import { addToCart } from '../../actions/cartActions';
-import { fetchProducts } from '../../actions/productActions'
+import { addToCartAction } from '../../actions/cartActions';
+import { fetchProductsAction } from '../../actions/productActions'
 
 import Modal from "react-modal";
 import { Fade } from 'react-awesome-reveal';
 import Button from '../Button/Button';
 import Rating from '../Rating/Rating';
-// import GenreTags from '../GenreTags/GenreTags';
+import GenreTags from '../GenreTags/GenreTags';
 
 const Hero = (props) => {
   const [modalProduct, setModalProduct] = useState(null);
@@ -101,9 +101,7 @@ const Hero = (props) => {
                   <div>
                       <div className="movie-details-title">{randomMovie.title}</div>
                   <p>{randomMovie.releaseDate}</p>
-                    {randomMovie.genres.map((genre) => (
-                        <p>{genre.genreId}</p>
-                      ))}
+                  <GenreTags genres={randomMovie.genres}/>
                   </div>
                     {/* <GenreTags genres={randomMovie.movieGenre}/> */}
                     <Rating rating={randomMovie.rating}/>
@@ -118,10 +116,14 @@ const Hero = (props) => {
   )
 }
 
-export default connect(
-  (state) => ({ products: state.products.filteredItems }),
-  {
-    fetchProducts,
-    addToCart,
-  }
-)(Hero);
+const mapStateToProps = ( state ) => ({ 
+  products: state.products.filteredItems,
+  genres: state.genres.genres,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProducts: () => dispatch(fetchProductsAction()),
+  addToCart: (product) => dispatch(addToCartAction(product)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Hero)

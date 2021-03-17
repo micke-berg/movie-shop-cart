@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import './Products.scss';
 
-import { fetchProducts, fetchGenres } from '../../actions/productActions'
-import { addToCart } from "../../actions/cartActions";
+import { fetchProductsAction } from '../../actions/productActions'
+import { fetchGenresAction } from '../../actions/genreActions'
+import { addToCartAction } from "../../actions/cartActions";
 
 import { connect } from 'react-redux';
 import { Fade } from 'react-awesome-reveal';
@@ -16,13 +17,14 @@ import GenreTags from '../GenreTags/GenreTags';
 const Products = ({
   props, 
   genre,
+  genres,
   products,
   fetchProducts,
   fetchGenres,
   addToCart
 }) => {
   const [product, setProduct] = useState(null);
-
+  
   useEffect(() => {
     fetchProducts();
     fetchGenres();
@@ -68,7 +70,9 @@ const Products = ({
         padding: "2%",
     }
   }
-  
+
+  console.log('genres', genre)
+
   return (
     <div className="movie-section">
       { !products ? (
@@ -79,8 +83,8 @@ const Products = ({
         ) : ( 
         <>
         <ul className="movies">
-          {genre ? <div className="movie-selection">{props.genre}Action movies</div> : <div className="movie-selection">Movie selection</div>}
-              {products.map((product) =>(
+          {!genres ? <div className="movie-selection">Movie selection</div> : <div className="movie-selection">{genre}Action movies</div>}
+              {products.map((product) => (
                 <li key={product.id} >
                   <div className="movie">
                     <a 
@@ -143,16 +147,18 @@ const Products = ({
   )
 }
 
-export default connect(
-  (state) => ({ 
-    products: state.products.filteredItems, 
-    success: state.products.success, 
-    genre: state.products.genres, 
-    items: state.products.items 
-  }),
-  {
-    fetchProducts,
-    fetchGenres,
-    addToCart,
-  }
-)(Products);
+const mapStateToProps = ( state ) => ({
+  products: state.products.filteredItems, 
+  success: state.products.success, 
+  genres: state.genres.genres, 
+  genre: state.genres.genre, 
+  items: state.products.items 
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchProducts: () => dispatch(fetchProductsAction()),
+  fetchGenres: () => dispatch(fetchGenresAction()),
+  addToCart: (product) => dispatch(addToCartAction(product)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Products)

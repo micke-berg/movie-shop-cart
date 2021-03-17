@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteOrder, fetchOrders } from "../../actions/orderAction";
-import { fetchProducts } from '../../actions/productActions'
+import { deleteOrderAction, fetchOrdersAction } from "../../actions/orderAction";
+import { fetchProductsAction } from '../../actions/productActions'
 import Button from "../Button/Button";
 import Logo from '../Logo/Logo';
 
@@ -93,15 +93,29 @@ const Orders = (props) => {
   );
 }
 
-export default connect(
-  (state) => ({
-    orders: state.order.orders,
-    delete: state.order.delete,
-    products: state.order.products
-  }),
-  {
-    deleteOrder,
-    fetchOrders,
-    fetchProducts
-  }
-)(Orders);
+// export default connect(
+//   (state) => ({
+//     orders: state.order.orders,
+//     delete: state.order.delete,
+//     products: state.order.products
+//   }),
+//   {
+//     deleteOrder,
+//     fetchOrders,
+//     fetchProducts
+//   }
+// )(Orders);
+
+const mapStateToProps = ( state ) => ({ 
+  orders: state.order.orders,
+  delete: state.order.delete,
+  products: state.order.products
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  deleteOrder: (order) => dispatch(deleteOrderAction(order)),
+  fetchOrders: () => dispatch(fetchOrdersAction()),
+  fetchProducts: () => dispatch(fetchProductsAction()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Orders)
