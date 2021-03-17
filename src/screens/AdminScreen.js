@@ -1,7 +1,7 @@
 import React from "react";
 import Orders from "../Components/Orders/Orders";
 
-const AdminScreen = ({ props, error }) => {
+const AdminScreen = ({ error }) => {
   if (error) return <div>Something went wrong ...</div>;
     return (
       <div>
