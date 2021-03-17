@@ -4,7 +4,7 @@ import {
   RESET_CART_ITEMS 
 } from "../types";
 
-export const addToCart = (product) => (dispatch, getState) => {
+export const addToCartAction = (product) => (dispatch, getState) => {
   console.log('cartItems', product);
   const cartItems = getState().cart.cartItems.slice();
   let alreadyAddedIndex = -1;
@@ -27,7 +27,7 @@ export const addToCart = (product) => (dispatch, getState) => {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
 
-export const removeFromCart = (product) => (dispatch, getState) => {
+export const removeFromCartAction = (product) => (dispatch, getState) => {
   const cartItems = getState().cart.cartItems.slice();
 
   cartItems.map((item, index) => {
@@ -46,10 +46,8 @@ export const removeFromCart = (product) => (dispatch, getState) => {
   localStorage.setItem("cartItems", JSON.stringify(cartItems));
 };
 
-export const resetCartItems = () => (dispatch)=> {
+export const resetCartItemsAction = () => (dispatch)=> {
   console.log('Reset');
   localStorage.clear();
   dispatch({ type: RESET_CART_ITEMS, payload: [] });
 };
-
-
