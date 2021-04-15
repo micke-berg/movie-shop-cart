@@ -1,11 +1,11 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './GenreTags.scss'
 
-const GenreTags = ({ genres, ...props }) => {
+const GenreTags = ({ productGenres, genres }) => {
   return (
     <div className="genre-tags"> 
-    {genres.map(genre => (
-      <span key={genre.genreId} className="genre">{genre.genreId}</span>
+    {productGenres.map(product => (
+      <span key={product.genreId} className="genre">{genres[product.genreId - 1].name}</span>
       ))}
     </div>
   )
