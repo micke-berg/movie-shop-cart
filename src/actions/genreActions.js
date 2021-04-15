@@ -4,7 +4,6 @@ import axios from "axios";
 export const fetchGenresAction = () => async (dispatch) => {
   await axios.get("/genre")
   .then((res) => {
-      console.log('movieGenres', res.data.data)
     dispatch({ 
       type: FETCH_GENRES, 
       payload: res.data.data || []
@@ -16,17 +15,28 @@ export const fetchGenresAction = () => async (dispatch) => {
 
 // TODO get this to work
 export const filterProductsByGenreAction = (products, genre) => (dispatch) => {
-  console.log('filteredProducts:', products);
-  console.log('filteredProductsGenre:', genre);
+  console.log('filteredProducts:...', products);
+  console.log('productsFilteredByGenre:', genre);
 
   dispatch({
     type: FILTER_PRODUCTS_BY_GENRE,
     payload: {
       genre: genre,
-      items: 
-        genre === ""
+      items:
+      genre === ""
           ? products
           : products.filter((x) => x.genres.indexOf(genre) >= 0),
     },
+
+    // payload: {
+    //   genre: genre,
+    //   productsFilteredByGenre: 
+    //     genre === ""
+    //       ? products
+    //       : products.filter((movie) => movie.genres.indexOf(genre) >= 0),
+    //   // filteredItems: products.filter(
+    //   //   movie => genre.includes(movie.genre)
+    //   //   )
+    // },
   });
 };
