@@ -13,7 +13,7 @@ export const genreReducer = (state = {}, action) => {
       return {
         ...state,
         genre: action.payload.genre,
-        filteredItems: action.payload.items,
+        productsFilteredByGenre: action.payload.products,
       };
     default:
       return state;
