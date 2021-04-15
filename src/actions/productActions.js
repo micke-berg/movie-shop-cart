@@ -4,7 +4,6 @@ import axios from "axios";
 export const fetchProductsAction = () => async (dispatch) => {
   await axios.get("/movie")
   .then((res) => {
-    console.log('fetchProducts:', res.data.data);
       dispatch({
         type: FETCH_PRODUCTS,
         payload: res.data.data,
@@ -14,11 +13,8 @@ export const fetchProductsAction = () => async (dispatch) => {
   })
 };
 
-// Works!
 export const sortProductsAction = (filteredProducts, sort) => (dispatch) => {
   const sortedProducts = filteredProducts.slice();
-  console.log('filteredProducts:', filteredProducts);
-
   if (sort === "") {
     sortedProducts.sort((a, b) => (a._id > b._id ? 1 : -1));
   } else {
@@ -43,14 +39,20 @@ export const sortProductsAction = (filteredProducts, sort) => (dispatch) => {
 };
 
 export const filterSearchAction = (products, searchTerm) => (dispatch) => {
-  
+  console.log('products', products)
+  console.log('searchTerm', searchTerm)
   dispatch({
     type: FILTER_BY_SEARCH,
     payload: {
-      searchResult: 'search'
-      // searchTerm === ""
+      searchResult: 'Search...'
+      // searchResult:
+      //   searchTerm === ""
       //     ? products
-      //     : products.filter((x) => x.genres.indexOf(genre) >= 0),
+      //     : products.filter((x) => x.genres.includes(searchTerm) >= 0),
+
+          // const results = people.filter(person =>
+          //   person.toLowerCase().includes(searchTerm)
+          // );
     },
   });
 };
