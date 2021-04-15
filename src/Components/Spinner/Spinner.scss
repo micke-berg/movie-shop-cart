@@ -1,7 +1,7 @@
 .spinner {
   position: fixed;
   z-index: 999;
-  top: 40%;
+  top: 38%;
   left: calc(50% - 45px);
   transform: translate(-50%, -50%);
   width: 7em;
@@ -10,7 +10,7 @@
   border-radius: 50%;
   border-left: solid 8px var(--accent-color);
   border-top: solid 8px transparent;
-  animation: spin 0.9s linear infinite;
+  animation: spin 0.85s linear infinite;
 }
 
 @keyframes spin {
