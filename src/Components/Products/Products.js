@@ -6,6 +6,7 @@ import { fetchGenresAction } from '../../actions/genreActions'
 import { addToCartAction } from "../../actions/cartActions";
 
 import { connect } from 'react-redux';
+import { Link } from "react-router-dom";
 import { Fade } from 'react-awesome-reveal';
 import Modal from "react-modal";
 
@@ -15,13 +16,13 @@ import Spinner from '../Spinner/Spinner';
 import GenreTags from '../GenreTags/GenreTags';
 
 const Products = ({
-  props, 
-  genre,
-  genres,
-  products,
+  filteredProducts,
   fetchProducts,
   fetchGenres,
-  addToCart
+  addToCart,
+  products,
+  genres,
+  genre,
 }) => {
   const [product, setProduct] = useState(null);
   
@@ -57,21 +58,25 @@ const Products = ({
         position: "absolute",
         display: "flex",
         flexWrap: "wrap",
-        justifyContent: "center",
+        justifyContent: "spaceBetween",
         top: "50%",
         left: "50%",
         "transform": "translate(-50%, -50%)",
-        height: "68%",
-        minHeight: "400px",
+        height: "66%",
+        minHeight: "516px",
         margin: "10px 0",
-        width: "66vw",
+        width: "62vw",
+        maxWidth: "1000px",
         border: "none",
+        borderRadius: "16px",
         background: "#242424",
-        padding: "2%",
+        padding: "0",
+        overflowX: "hidden"
     }
   }
 
-  console.log('genres', genre)
+  console.log('genre', genre)
+  console.log('filteredProducts...', products)
 
   return (
     <div className="movie-section">
@@ -83,7 +88,7 @@ const Products = ({
         ) : ( 
         <>
         <ul className="movies">
-          {!genres ? <div className="movie-selection">Movie selection</div> : <div className="movie-selection">{genre}Action movies</div>}
+          {!genre ? <div className="movie-selection">Movie selection</div> : <div className="movie-selection">{genres[genre -1].name} movies</div>}
               {products.map((product) => (
                 <li key={product.id} >
                   <div className="movie">
@@ -115,21 +120,24 @@ const Products = ({
         >
           <Fade duration={200}>
             <div className="modal-wrapper">
-              <button 
-                onClick={() => closeModal()} 
-                className="close-modal" >
-              </button>
+              <a className="nav-links" href="/">
+                <button 
+                  onClick={() => closeModal()} 
+                  className="close-modal" 
+                />
+              </a>
               <div className="movie-details">
                 <img src={product.image} alt={product.title}/>      
                 <div className="movie-details-description">
                   <div>
-                      <div className="movie-details-title">{product.title}</div>
-                  <p>{product.releaseDate}</p>
-                    <GenreTags
-                      genres={product.genres}
-                    />
+                    <p className="movie-details-title">{product.title}</p>
                   </div>
-                    <Rating rating={product.rating}/>
+                  <div>{product.releaseDate}</div>
+                  <GenreTags
+                    productGenres={product.genres}
+                    genres={genres}
+                  />
+                  <Rating rating={product.rating}/>
                   <p>{truncate(product.description, 280)}</p>
                   <button 
                     className="modal-button"
@@ -148,7 +156,8 @@ const Products = ({
 }
 
 const mapStateToProps = ( state ) => ({
-  products: state.products.filteredItems, 
+  // filteredProducts: state.products.filteredItems,
+  products: state.products.filteredItems,
   success: state.products.success, 
   genres: state.genres.genres, 
   genre: state.genres.genre, 
