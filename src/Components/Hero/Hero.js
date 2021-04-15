@@ -10,7 +10,13 @@ import Button from '../Button/Button';
 import Rating from '../Rating/Rating';
 import GenreTags from '../GenreTags/GenreTags';
 
-const Hero = (props) => {
+const Hero = ({
+  props,
+  products,
+  genres,
+  fetchProducts,
+  addToCart
+}) => {
   const [modalProduct, setModalProduct] = useState(null);
   const [randomMovie, setRandomMovie] = useState(0);
 
@@ -23,8 +29,8 @@ const Hero = (props) => {
   }
   
   useEffect(() => {
-    getRandomMovies(props.products);
-  },[props.products]);
+    getRandomMovies(products);
+  },[products]);
   
   const truncate = (str, n) => {
     return str?.length > n ? str.substring(0, n - 1) + "..." : str;
@@ -53,18 +59,21 @@ const Hero = (props) => {
       position: "absolute",
       display: "flex",
       flexWrap: "wrap",
-      justifyContent: "center",
+      justifyContent: "spaceBetween",
       top: "50%",
       left: "50%",
       "transform": "translate(-50%, -50%)",
-      height: "68%",
-      minHeight: "400px",
+      height: "66%",
+      minHeight: "516px",
       margin: "10px 0",
-      width: "66vw",
+      width: "62vw",
+      maxWidth: "1000px",
       border: "none",
+      borderRadius: "16px",
       background: "#242424",
-      padding: "2%",
-    },
+      padding: "0",
+      overflowX: "hidden"
+  }
   }
 
   return (
@@ -80,7 +89,7 @@ const Hero = (props) => {
             {truncate(randomMovie.description, 230)}
             </p>
           <div className="actions">
-            <button className="button-container primary-button" onClick={() => props.addToCart(randomMovie)} label="Add to Cart">Add to Cart</button>
+            <button className="button-container primary-button" onClick={() => addToCart(randomMovie)} label="Add to Cart">Add to Cart</button>
             <Button onClick={() => openProductModal(randomMovie)} secondary label="More Info"/>
           </div>
         </div>
@@ -88,30 +97,34 @@ const Hero = (props) => {
       </div>
       {modalProduct && 
         <Modal 
-          isOpen={true} 
-          onRequestClose={closeProductModal}
-          style={heroModalStyles}
-        >
-          <Fade duration={200}>
-            <div className="modal-wrapper">
-              <button onClick={() => closeProductModal() } className="close-modal" ></button>
-              <div className="movie-details">
-                <img src={randomMovie.image} alt={randomMovie.title}/>      
-                <div className="movie-details-description">
-                  <div>
-                      <div className="movie-details-title">{randomMovie.title}</div>
-                  <p>{randomMovie.releaseDate}</p>
-                  <GenreTags genres={randomMovie.genres}/>
-                  </div>
-                    {/* <GenreTags genres={randomMovie.movieGenre}/> */}
-                    <Rating rating={randomMovie.rating}/>
-                  <p>{truncate(randomMovie.description, 280)}</p>
-                  <button onClick={() => {props.addToCart(modalProduct); closeProductModal();}} className="modal-button">Add to cart</button>
+        isOpen={true} 
+        onRequestClose={closeProductModal}
+        style={heroModalStyles}
+      >
+        <Fade duration={200}>
+          <div className="modal-wrapper">
+            <button 
+              onClick={() => closeProductModal() } 
+              className="close-modal" />
+            <div className="movie-details">
+              <img src={randomMovie.image} alt={randomMovie.title}/>      
+              <div className="movie-details-description">
+                <div>
+                  <p className="movie-details-title">{randomMovie.title}</p>
+                <p>{randomMovie.releaseDate}</p>
                 </div>
+                <GenreTags
+                    productGenres={randomMovie.genres}
+                    genres={genres}
+                  />
+                  <Rating rating={randomMovie.rating}/>
+                <p>{truncate(randomMovie.description, 280)}</p>
+                <button onClick={() => {addToCart(modalProduct); closeProductModal();}} className="modal-button">Add to cart</button>
               </div>
             </div>
-          </Fade>
-        </Modal>}
+          </div>
+        </Fade>
+      </Modal>}
     </>
   )
 }

@@ -5,11 +5,19 @@ import { connect } from 'react-redux';
 import { sortProductsAction } from '../../actions/productActions';
 import { filterProductsByGenreAction } from '../../actions/genreActions';
 
-const Filter = (props) => {
+const Filter = ({
+  sort,
+  genre,
+  genres, 
+  products,
+  sortProducts,
+  filteredProducts,
+  filterProductsByGenre
+}) => {
 
   const getGenres = (genres) => {
     if (genres) {
-      return genres.map((genre, i) => (
+      return genres.map((genre) => (
         <option value={genre.id} key={genre.id}>
           {genre.name}
         </option>
@@ -25,10 +33,10 @@ const Filter = (props) => {
       <div className="filter-select">
         <div className="filter-sort">
         <select
-          value={props.sort}
+          value={sort}
           onChange={(e) =>
-            props.sortProducts(
-              props.filteredProducts,
+            sortProducts(
+              filteredProducts,
               e.target.value
             )
           }
@@ -43,15 +51,15 @@ const Filter = (props) => {
         
         <div className="filter-genre">
           <select 
-            value={props.genre} 
+            value={genre} 
             onChange={(e) => 
-              props.filterProductsByGenre(
-                props.products, 
+              filterProductsByGenre(
+                products, 
                 e.target.value)
               } 
             >
               <option value="">Genres</option>
-            {getGenres(props.genres)}
+            {getGenres(genres)}
           </select>
           <div className="custom-arrow2"></div>
         </div>
