@@ -53,26 +53,7 @@ const Products = ({
         bottom: 0,
         backgroundColor: "rgba(0, 0, 0, 0.75)",
         overflowY: "auto",
-      },
-      content: {
-        position: "absolute",
-        display: "flex",
-        flexWrap: "wrap",
-        justifyContent: "spaceBetween",
-        top: "50%",
-        left: "50%",
-        "transform": "translate(-50%, -50%)",
-        height: "66%",
-        minHeight: "516px",
-        margin: "10px 0",
-        width: "62vw",
-        maxWidth: "1000px",
-        border: "none",
-        borderRadius: "16px",
-        background: "#242424",
-        padding: "0",
-        overflowX: "hidden"
-    }
+      }
   }
 
   console.log('genre', genre)
@@ -117,6 +98,7 @@ const Products = ({
           isOpen={true} 
           onRequestClose={closeModal}
           style={productModalStyles}
+          className="product-modal"
         >
           <Fade duration={200}>
             <div className="modal-wrapper">

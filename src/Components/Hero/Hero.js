@@ -54,26 +54,7 @@ const Hero = ({
       bottom: 0,
       backgroundColor: "rgba(0, 0, 0, 0.75)",
       overflowY: "auto",
-    },
-    content: {
-      position: "absolute",
-      display: "flex",
-      flexWrap: "wrap",
-      justifyContent: "spaceBetween",
-      top: "50%",
-      left: "50%",
-      "transform": "translate(-50%, -50%)",
-      height: "66%",
-      minHeight: "516px",
-      margin: "10px 0",
-      width: "62vw",
-      maxWidth: "1000px",
-      border: "none",
-      borderRadius: "16px",
-      background: "#242424",
-      padding: "0",
-      overflowX: "hidden"
-  }
+    }
   }
 
   return (
@@ -100,9 +81,10 @@ const Hero = ({
         isOpen={true} 
         onRequestClose={closeProductModal}
         style={heroModalStyles}
+        className="hero-modal"
       >
         <Fade duration={200}>
-          <div className="modal-wrapper">
+          <div className="hero-modal-wrapper">
             <button 
               onClick={() => closeProductModal() } 
               className="close-modal" />
