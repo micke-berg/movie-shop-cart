@@ -78,6 +78,7 @@
 }
 
 .movie-details {
+  position: relative;
   color: rgba(255, 255, 255, 0.95);
   display: flex;
   flex-wrap: wrap;
@@ -85,7 +86,6 @@
   max-height: 96vh;
   img {
     margin: 0 auto;
-    // max-width: 40%;
     width: auto;
     height: 60%;
     -o-object-fit: cover;
@@ -104,13 +104,13 @@
     transform: scale(0.5);
   }
   .movie-details-title {
-    padding-top: 4%;
+    padding-top: 6%;
     font-size: 2.4rem;
   }
 }
 
 .modal-button {
-  margin-bottom: 10%;
+  margin-top: 6%;
 }
 
 .close-modal {
@@ -125,8 +125,8 @@
   color: #ffffff;
   &::before {
     position: absolute;
-    top: 17.5px;
-    right: 7.5px;
+    top: 17px;
+    right: 8px;
     content: '';
     height: 1.5px;
     width: 20px;
@@ -167,7 +167,6 @@
   position: absolute;
   display: flex;
   justify-content: space-between;
-  background: #242424;
   top: 50%;
   left: 50%;
   right: 50%;
@@ -210,10 +209,43 @@
   }
 }
 @media screen and (max-width: 1200px) {
+  .movie-details {
+    img {
+      width: 100%;
+    }
+    .movie-details-description {
+      position: relative;
+      top: 0;
+      padding-top: 0;
+      margin-top: -400px;
+      z-index: 1;
+      &::before {
+        position: absolute;
+        content: '';
+        bottom: 0%;
+        right: 0;
+        height: 150%;
+        width: 100%;
+        background: linear-gradient(to top, #242424, transparent 80%);
+        border-radius: 2px;
+        z-index: -1;
+      }
+      div {
+        margin-bottom: 12px;
+      }
+      :first-child {
+        margin-bottom: 16px;
+      }
+    }
+    // .movie-details-title {
+    //   padding-top: 0;
+    // }
+  }
   .product-modal {
     overflow-y: auto;
+    margin-top: 0;
   }
   .modal-button {
-    margin-bottom: 0%;
+    margin-top: 26px;
   }
 }

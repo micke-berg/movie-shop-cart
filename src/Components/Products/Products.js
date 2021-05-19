@@ -129,6 +129,7 @@ const Products = ({
                     Add to cart
                   </button>
                 </div>
+                <div className="movie-details-fade"></div>
               </div>
             </div>
           </Fade>
