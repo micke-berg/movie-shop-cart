@@ -4,36 +4,36 @@ import { connect } from 'react-redux';
 import { filterSearchAction } from '../../actions/productActions';
 import SearchIcon from '@material-ui/icons/Search';
 
-const Search = (props) => {
+const Search = ({ filterSearch }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const initial = useRef(true);
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    setSearchTerm(event.currentTarget.value)
+  }
 
   useEffect(() => {
     if (initial.current) {
       initial.current = false;
       return;
     }
-
-    const timer = setTimeout(() => {
-      props.filterSearch(searchTerm);
-    }, 500);
-
-    return () => clearTimeout(timer);
-  }, [searchTerm]);
+    
+    filterSearch(searchTerm);
+  }, [filterSearch, searchTerm]);
   
   console.log('search', searchTerm)
 
   return (
     <div className="search-content">
       <div className="search">
-        <form>
+        <form onSubmit={submitHandler}>
           <input 
             type="text" 
             className="search__input" 
             aria-label="search" 
             placeholder="Titles, genres..."
             onChange={(event) => setSearchTerm(event.currentTarget.value)}
-            value={searchTerm}
           ></input>
           <button className="search__button" aria-label="submit search">
             <SearchIcon fontSize="medium" className="search-icon" />
