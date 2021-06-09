@@ -27,16 +27,5 @@ export const filterProductsByGenreAction = (products, genre) => (dispatch) => {
           ? products
           : products.filter((x) => x.genres.indexOf(genre) >= 0),
     },
-
-    // payload: {
-    //   genre: genre,
-    //   productsFilteredByGenre: 
-    //     genre === ""
-    //       ? products
-    //       : products.filter((movie) => movie.genres.indexOf(genre) >= 0),
-    //   // filteredItems: products.filter(
-    //   //   movie => genre.includes(movie.genre)
-    //   //   )
-    // },
   });
 };

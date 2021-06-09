@@ -28,7 +28,7 @@ export const sortProductsAction = (filteredProducts, sort) => (dispatch) => {
         : 1
     );
   }
-  console.log('sortedProducts: ', sortedProducts);
+
   dispatch({
     type: ORDER_PRODUCTS_BY_PRICE,
     payload: {
@@ -39,20 +39,11 @@ export const sortProductsAction = (filteredProducts, sort) => (dispatch) => {
 };
 
 export const filterSearchAction = (products, searchTerm) => (dispatch) => {
-  console.log('products', products)
-  console.log('searchTerm', searchTerm)
+
   dispatch({
     type: FILTER_BY_SEARCH,
     payload: {
       searchResult: 'Search...'
-      // searchResult:
-      //   searchTerm === ""
-      //     ? products
-      //     : products.filter((x) => x.genres.includes(searchTerm) >= 0),
-
-          // const results = people.filter(person =>
-          //   person.toLowerCase().includes(searchTerm)
-          // );
     },
   });
 };

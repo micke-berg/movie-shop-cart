@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Scrollbars } from 'react-custom-scrollbars';
 
 const CustomScrollbars = ({ props, style }) => {
@@ -19,11 +19,6 @@ const CustomScrollbars = ({ props, style }) => {
   );
   return (
     <CustomScrollbars
-      // renderTrackHorizontal={props => <div {...props} className="track-horizontal"/>}
-      // renderTrackVertical={props => <div {...props} className="track-vertical"/>}
-      // renderThumbHorizontal={props => <div {...props} className="thumb-horizontal"/>}
-      // renderThumbVertical={props => <div {...props} className="thumb-vertical"/>}
-      // renderView={props => <div {...props} className="view"/>}
       >
       {props}
     </CustomScrollbars>

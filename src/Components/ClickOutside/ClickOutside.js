@@ -15,7 +15,6 @@ function useOutsideAlerter(ref) {
   }, [ref]);
 }
 
-// Component wrapper if you click outside
 function ClickOutside(props) {
   const wrapperRef = useRef(null);
   useOutsideAlerter(wrapperRef);

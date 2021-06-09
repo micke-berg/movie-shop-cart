@@ -4,9 +4,9 @@ import Orders from "../Components/Orders/Orders";
 const AdminScreen = ({ error }) => {
   if (error) return <div>Something went wrong ...</div>;
     return (
-      <div>
+      <section>
         <Orders />
-      </div>
+      </section>
     );
 }
 

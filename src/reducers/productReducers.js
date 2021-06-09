@@ -27,10 +27,6 @@ export const productsReducer = (state = {}, action) => {
         sort: action.payload.sort,
         filteredItems: action.payload.items,
       };
-    // case FETCH_GENRES:
-    //   return { 
-    //     genres: action.payload, 
-    //   };
     default:
       return state;
   }

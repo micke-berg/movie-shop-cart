@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useSelector } from 'react';
 import './Products.scss';
 
 import { fetchProductsAction } from '../../actions/productActions'
@@ -6,7 +6,6 @@ import { fetchGenresAction } from '../../actions/genreActions'
 import { addToCartAction } from "../../actions/cartActions";
 
 import { connect } from 'react-redux';
-import { Link } from "react-router-dom";
 import { Fade } from 'react-awesome-reveal';
 import Modal from "react-modal";
 
@@ -55,9 +54,6 @@ const Products = ({
         overflowY: "auto",
       }
   }
-
-  console.log('genre', genre)
-  console.log('filteredProducts...', products)
 
   return (
     <div className="movie-section">
@@ -139,7 +135,6 @@ const Products = ({
 }
 
 const mapStateToProps = ( state ) => ({
-  // filteredProducts: state.products.filteredItems,
   products: state.products.filteredItems,
   success: state.products.success, 
   genres: state.genres.genres, 

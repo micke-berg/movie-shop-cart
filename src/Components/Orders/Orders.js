@@ -47,7 +47,7 @@ const Orders = (props) => {
         <Link className="home" to="/"><Logo /></Link>
       <div>
       </div>
-      <div className="orders-header">
+      <header className="orders-header">
         <h2>ORDERS</h2>
         <input
           placeholder=' Enter order id...'
@@ -60,7 +60,7 @@ const Orders = (props) => {
           onClick={runDeleteOrder} 
           className='primary-button' 
           label='Delete' />
-      </div>
+      </header>
       <table>
         <thead>
           <tr>
@@ -92,19 +92,6 @@ const Orders = (props) => {
     </div>
   );
 }
-
-// export default connect(
-//   (state) => ({
-//     orders: state.order.orders,
-//     delete: state.order.delete,
-//     products: state.order.products
-//   }),
-//   {
-//     deleteOrder,
-//     fetchOrders,
-//     fetchProducts
-//   }
-// )(Orders);
 
 const mapStateToProps = ( state ) => ({ 
   orders: state.order.orders,
