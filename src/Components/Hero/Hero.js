@@ -59,7 +59,7 @@ const Hero = ({
 
   return (
     <>
-      <div className="hero-section">
+      <section className="hero-section">
         <div className="hero" style={{ backgroundImage: `linear-gradient(to right, rgba(0, 0, 0, 0.7) 15%, transparent 60%), url(${randomMovie.backdrop})` }}>
         </div>
           <div className="hero-info-wrapper">
@@ -75,7 +75,7 @@ const Hero = ({
           </div>
         </div>
         <div className="fade-bottom"></div>
-      </div>
+      </section>
       {modalProduct && 
         <Modal 
         isOpen={true} 
