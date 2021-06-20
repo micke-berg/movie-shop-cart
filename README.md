@@ -4,6 +4,8 @@
 
 <img width="1440" alt="movie-2" src="https://user-images.githubusercontent.com/47321557/113721423-d03de700-96ef-11eb-92f8-34cda141e46b.png">
 
+<img width="1427" alt="Skärmavbild 2021-06-20 kl  09 57 36" src="https://user-images.githubusercontent.com/47321557/122666533-17475e80-d1ae-11eb-8bcb-27f396d768c3.png">
+
 React, Redux, JavaScript, HTML, and CSS/SASS.
 
 ## 
